@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #267332;
+  --color-brand-dark: #1E5E2A;
+  --color-cream-surface: #F4EFE6;
+  --color-cream-bg: #F6F2EA;
+}
+
+/* Custom scrollbars matching the cream/green palette */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EFE6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D0C5;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7A7067;
+}

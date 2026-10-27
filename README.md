@@ -1,0 +1,153 @@
+# 🌱 YBY — Plataforma de Gestão de Resíduos & Coleta Seletiva
+
+[![React](https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-6.0.1-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.15-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Recharts](https://img.shields.io/badge/Recharts-2.13.3-22B5BF)](https://recharts.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+Aplicação Web e Mobile desenvolvida para a **YBY Soluções Sustentáveis**, reformulando e modernizando a experiência de ponta a ponta: desde a Landing Page institucional até o ecossistema operacional de agendamento de coletas, relatórios de impacto socioambiental ESG e inteligência de dados para cooperativas, PEVs e gestores.
+
+---
+
+## 🚀 Demonstração Online
+
+* **Deploy Vercel:** [https://yby-web.vercel.app](https://yby-web.vercel.app) *(ou link atualizado após deploy)*
+* **Design System & Protótipo no Figma:** [Protótipo YBY — Figma](https://www.figma.com/proto/smcM50NPk6mbS9j5uzONPP/Projeto-YBY?node-id=2-206&scaling=min-zoom&starting-point-node-id=2%3A206)
+
+---
+
+## 🌟 Principais Funcionalidades
+
+### 1. 🌿 Landing Page Institucional (`/`)
+* Hero Section com métricas de impacto certificadas.
+* 4 Indicadores ESG em tempo real (Energia, Água, CO₂ evitado e Árvores).
+* Seções *"Como funciona"*, *"Para quem"* e *"Funcionalidades da Plataforma"*.
+* 100% responsiva para celulares, tablets e desktops.
+
+### 2. 🔐 Jornada Completa de Autenticação (`/signIn`, `/signIn-client`, etc.)
+* Layout **Split-Screen** floresta/creme com o símbolo oficial do YBY.
+* Login Administrativo (`Admin`/`Gestor`) e Login específico para Cooperativas.
+* Fluxo de recuperação de senha em 3 etapas (`Esqueceu a senha` ➔ `Verifique seu e-mail` ➔ `Nova senha`).
+
+### 3. 📊 Dashboard Ambiental Reativo (`/dashboard`)
+* Filtros rápidos em pílula (**"Semana Atual"** vs. **"Mês atual"**).
+* Chaveamento reativo em tempo real:
+  * **4 KPIs Primários:** Consumo de Energia, Economia de Água, CO₂ evitado e Valor Climático Estimado.
+  * **4 KPIs Secundários:** Benefício Socioambiental, Petróleo evitado, Árvores poupadas e Espaço em aterro sanitário.
+  * **Gráficos Dinâmicos:** Coleta em peso (Área), Rosca com peso total centralizado e Gráficos de barras para Água e Energia.
+* Exportação de Relatório Executivo em PDF e pacote de artes para Instagram Stories.
+
+### 4. 📅 Planejamento Semanal (`/planejamento`)
+* **Visão Desktop:** Matriz semanal (Segunda a Sexta) com pílulas coloridas por cooperativa, campo de busca interna e detecção de status `Salvo` / `Não salvo`.
+* **Visão Mobile:** Adaptação responsiva para **Cards Semanais Interativos** por cliente com alvos de toque ergonômicos e barra flutuante inferior de salvamento em lote.
+
+### 5. 📑 Relatórios e Auditoria de Coletas (`/relatorios`)
+* Tabela zebra com paginação e busca combinada.
+* Modais com o novo Design System:
+  * Modal de **Edição de Coleta** com recálculo automático de peso e justificativa obrigatória.
+  * Modal de **Confirmação de Exclusão**.
+  * Modal de **Galeria de Evidências Fotográficas** com fotos dos coletores e status de avaria.
+* Exportação para planilhas Excel (`.xlsx`).
+
+### 6. 📝 Cadastros e Edições Unificados (`/cadastro` e `/edicao`)
+* Abas em pílula (`Cliente`, `Cooperativa`, `Gestor`).
+* Busca automática de endereço por CEP integrada com a API do ViaCEP.
+* Sincronização automática com a Sidebar e parâmetros de URL (`?tab=...`).
+* *Empty State* amigável com lupa na tela de edição antes de selecionar o registro.
+
+### 7. 🚛 Ponto de Coleta Mobile (`/ponto-coleta`)
+* Rota dedicada e otimizada para cooperativas em campo com alto contraste para luz solar.
+* Lista de PEVs do dia, calculadora de densidade (Litros ➔ Kg) e upload de evidências fotográficas.
+
+---
+
+## 🏛️ Padrões de Engenharia (SOLID & GRASP)
+
+O projeto foi arquitetado em **JavaScript puro (ES6+)** seguindo rigorosamente os padrões de Clean Frontend:
+
+* **Separação Estrita entre View e Lógica:** Os componentes `.jsx` são puramente visuais e declarativos. Toda regra de cálculo fica na camada de Domínio (`src/domain/`) e toda orquestração de estado fica em *Controller Hooks* (`use...Controller.js`).
+* **SOLID:**
+  * **SRP:** Arquivos enxutos (< 150-200 linhas) com responsabilidade única.
+  * **OCP:** Calculadora de densidade (`wasteCalculator.js`) aberta para novos resíduos através de mapa de configuração sem alterar código legado.
+  * **DIP:** Telas consom interfaces de repositórios desacopladas de APIs externas.
+* **GRASP:** Aplicação de *Information Expert*, *Controller*, *Low Coupling* e *High Cohesion*.
+* **JSDoc Completo:** Tipagem e autocomplete para desenvolvedores sem necessidade de compilação TypeScript adicional.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Framework:** [React 18](https://react.dev/) + [Vite 6](https://vitejs.dev/)
+* **Roteamento:** [React Router DOM v6](https://reactrouter.com/)
+* **Estilização:** [Tailwind CSS 3](https://tailwindcss.com/)
+* **Gráficos:** [Recharts](https://recharts.org/)
+* **Ícones:** [Lucide React](https://lucide.dev/)
+* **Notificações:** [Sonner](https://sonner.emilkowal.ski/)
+* **Deploy & CI/CD:** [Vercel](https://vercel.com/)
+
+---
+
+## 💻 Como Rodar o Projeto Localmente
+
+### Pré-requisitos
+* Node.js 18+ instalado
+* Git instalado
+
+### Passo a Passo
+
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/ACrush14/yby-web.git
+cd yby-web
+
+# 2. Instalar dependências
+npm install
+
+# 3. Iniciar o servidor de desenvolvimento
+npm run dev
+
+# 4. Acessar a aplicação
+http://localhost:3000
+```
+
+### Build de Produção
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 📂 Estrutura de Pastas
+
+```
+yby-web/
+├── public/                 # Favicon e imagens do símbolo oficial YBY
+├── src/
+│   ├── app/                # AppShell e Router
+│   ├── domain/             # Cálculos, constantes e regras de negócio puras (SOLID)
+│   ├── features/           # Módulos verticais por funcionalidade
+│   │   ├── auth/           # Login, recuperação e verificação
+│   │   ├── cadastro/       # Cadastros unificados (Cliente, Cooperativa, Gestor)
+│   │   ├── dashboard/      # Indicadores analíticos, KPIs e gráficos
+│   │   ├── edicao/         # Edições cadastrais em abas
+│   │   ├── landing/        # Landing page institucional
+│   │   ├── planejamento/   # Escala semanal cooperativas x PEVs
+│   │   ├── ponto-coleta/   # Visão mobile de campo para cooperativas
+│   │   └── relatorios/     # Tabela de coletas, modais e auditoria
+│   ├── services/           # Repositórios (API e Mock híbrido)
+│   ├── shared/             # Layouts (Sidebar, Header), Componentes UI e Gráficos
+│   └── styles/             # Tokens do Design System e CSS global
+├── docs/                   # Documentação arquitetural profunda e prints do Figma
+├── PLANEJAMENTO.md         # Planejamento estratégico geral
+├── TODO.md                 # Backlog e checklists do Painel Administrativo
+└── vercel.json             # Configuração de rotas para deploy na Vercel
+```
+
+---
+
+## 📄 Licença
+
+Este projeto é desenvolvido para fins educacionais, de portfólio e evolução tecnológica para a **YBY Soluções Sustentáveis**, sob licença MIT.
