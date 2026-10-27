@@ -6,6 +6,8 @@ Este repositório contém o planejamento completo, documentação de domínio, m
 
 ## 🔗 Links de Referência
 
+* **Deploy Vercel (Produção):** [`https://yby-web.vercel.app`](https://yby-web.vercel.app)
+* **Repositório GitHub:** [`https://github.com/ACrush14/yby-web`](https://github.com/ACrush14/yby-web)
 * **Protótipo no Figma:** [Projeto YBY — Figma Prototype](https://www.figma.com/proto/smcM50NPk6mbS9j5uzONPP/Projeto-YBY?node-id=2-206&t=I8hdCf3hORwKR4Sx-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A206)
 * **Sistema Atual (Produção):** [`https://somosyby.com/`](https://somosyby.com/)
 * **Site Institucional Atual:** [`https://somosyby.com.br/`](https://somosyby.com.br/)

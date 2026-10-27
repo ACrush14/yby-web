@@ -10,9 +10,10 @@ Aplicação Web e Mobile desenvolvida para a **YBY Soluções Sustentáveis**, r
 
 ---
 
-## 🚀 Demonstração Online
+## 🚀 Demonstração Online & Repositório
 
-* **Deploy Vercel:** [https://yby-web.vercel.app](https://yby-web.vercel.app) *(ou link atualizado após deploy)*
+* **Deploy Vercel:** [https://yby-web.vercel.app](https://yby-web.vercel.app)
+* **Repositório GitHub:** [https://github.com/ACrush14/yby-web](https://github.com/ACrush14/yby-web)
 * **Design System & Protótipo no Figma:** [Protótipo YBY — Figma](https://www.figma.com/proto/smcM50NPk6mbS9j5uzONPP/Projeto-YBY?node-id=2-206&scaling=min-zoom&starting-point-node-id=2%3A206)
 
 ---
