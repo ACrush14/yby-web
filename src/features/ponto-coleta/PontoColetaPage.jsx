@@ -61,7 +61,7 @@ export function PontoColetaPage() {
       />
 
       {/* Lista de PEVs de Hoje */}
-      <div className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border">
+      <div className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border transition-all duration-300 ease-out hover:shadow-card hover:border-yby-primary/30">
         <div className="flex items-center gap-2 mb-3">
           <Truck className="w-5 h-5 text-yby-primary" />
           <h2 className="text-sm font-bold text-yby-heading">PEVs da Rota de Hoje</h2>
@@ -75,10 +75,10 @@ export function PontoColetaPage() {
                 key={pev.id}
                 type="button"
                 onClick={() => setSelectedPev(pev)}
-                className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all ${
+                className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all duration-200 hover:-translate-y-0.5 ${
                   isSelected
                     ? 'bg-white border-yby-primary shadow-sm ring-2 ring-yby-tint'
-                    : 'bg-white/60 border-yby-border hover:bg-white'
+                    : 'bg-white/60 border-yby-border hover:bg-white hover:shadow-sm'
                 }`}
               >
                 <div>
@@ -100,7 +100,7 @@ export function PontoColetaPage() {
       </div>
 
       {/* Formulário de Registro de Coleta */}
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl border border-yby-border shadow-card space-y-5">
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl border border-yby-border shadow-card space-y-5 transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
         <div className="border-b border-yby-border/60 pb-3">
           <h3 className="font-extrabold text-base text-yby-heading">
             Apontar Coleta: {selectedPev?.name}

@@ -13,7 +13,7 @@ export function PlanningTable({ rows = [], originalRows = [], cooperatives = [],
   ];
 
   return (
-    <div className="w-full bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card">
+    <div className="w-full bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -33,7 +33,7 @@ export function PlanningTable({ rows = [], originalRows = [], cooperatives = [],
               const isUnsaved = hasUnsavedChanges(original, row);
 
               return (
-                <tr key={row.id} className="hover:bg-yby-surface/30 transition-colors">
+                <tr key={row.id} className="hover:bg-yby-tint/40 transition-colors duration-150">
                   {/* Nome do Cliente e resumo de cobertura */}
                   <td className="py-3.5 px-4">
                     <p className="font-bold text-yby-heading">{row.clientName}</p>

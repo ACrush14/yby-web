@@ -27,7 +27,7 @@ export function CooperativeForm({ onCancel, onSuccess }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-yby-border p-6 shadow-card space-y-6">
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-yby-border p-6 shadow-card space-y-6 transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
       <div>
         <h3 className="text-base font-extrabold text-yby-heading mb-4 pb-2 border-b border-yby-border/60">
           Dados da Cooperativa
@@ -91,7 +91,7 @@ export function ManagerForm({ onCancel, onSuccess }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-yby-border p-6 shadow-card space-y-6">
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-yby-border p-6 shadow-card space-y-6 transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
       <div>
         <h3 className="text-base font-extrabold text-yby-heading mb-4 pb-2 border-b border-yby-border/60">
           Dados do Gestor

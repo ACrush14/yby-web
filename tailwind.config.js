@@ -40,7 +40,23 @@ export default {
       },
       boxShadow: {
         card: '0 2px 8px -2px rgba(61, 46, 40, 0.06), 0 1px 4px -1px rgba(61, 46, 40, 0.04)',
+        'card-hover': '0 12px 24px -4px rgba(61, 46, 40, 0.08), 0 6px 12px -4px rgba(38, 115, 50, 0.08)',
+        'card-elevated': '0 18px 32px -6px rgba(38, 115, 50, 0.12), 0 8px 16px -4px rgba(61, 46, 40, 0.06)',
         popup: '0 10px 25px -5px rgba(61, 46, 40, 0.1), 0 8px 10px -6px rgba(61, 46, 40, 0.08)',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
+        },
+      },
+      animation: {
+        float: 'float 4s ease-in-out infinite',
+        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
       },
     },
   },

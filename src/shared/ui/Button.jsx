@@ -20,19 +20,19 @@ export function Button({
   ...props
 }) {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none';
+    'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:active:scale-100 select-none';
 
   const variants = {
     primary:
-      'bg-yby-primary text-white hover:bg-yby-primary-hover focus:ring-yby-primary border border-transparent shadow-sm',
+      'bg-yby-primary text-white hover:bg-yby-primary-hover hover:shadow-md focus:ring-yby-primary border border-transparent shadow-sm',
     secondary:
-      'bg-yby-surface text-yby-heading hover:bg-yby-border focus:ring-yby-primary border border-yby-border',
+      'bg-yby-surface text-yby-heading hover:bg-yby-border hover:shadow-sm focus:ring-yby-primary border border-yby-border',
     outline:
-      'bg-transparent text-yby-primary hover:bg-yby-tint border border-yby-primary focus:ring-yby-primary',
+      'bg-transparent text-yby-primary hover:bg-yby-tint hover:shadow-sm border border-yby-primary focus:ring-yby-primary',
     ghost:
-      'bg-transparent text-yby-heading hover:bg-yby-surface border border-transparent focus:ring-yby-primary',
+      'bg-transparent text-yby-heading hover:bg-yby-surface border border-transparent focus:ring-yby-primary hover:translate-y-0',
     danger:
-      'bg-yby-danger text-white hover:bg-red-700 focus:ring-yby-danger border border-transparent shadow-sm',
+      'bg-yby-danger text-white hover:bg-red-700 hover:shadow-md focus:ring-yby-danger border border-transparent shadow-sm',
   };
 
   const sizes = {

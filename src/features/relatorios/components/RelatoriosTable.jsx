@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/Button.jsx';
 
 export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhotos }) {
   return (
-    <div className="bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card">
+    <div className="bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -26,7 +26,7 @@ export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhot
               return (
                 <tr
                   key={item.id}
-                  className={isEven ? 'bg-yby-zebra hover:bg-yby-surface/50' : 'bg-white hover:bg-yby-surface/50'}
+                  className={`transition-colors duration-150 ${isEven ? 'bg-yby-zebra hover:bg-yby-tint/40' : 'bg-white hover:bg-yby-tint/40'}`}
                 >
                   <td className="py-3.5 px-4 text-xs font-medium text-yby-muted">
                     {item.id}
@@ -62,7 +62,7 @@ export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhot
                       <button
                         type="button"
                         onClick={() => onEdit(item)}
-                        className="p-1.5 rounded-lg text-yby-muted hover:text-yby-heading hover:bg-white transition-colors"
+                        className="p-1.5 rounded-lg text-yby-muted hover:text-yby-heading hover:bg-white transition-all duration-150 hover:scale-110 active:scale-95 hover:shadow-sm"
                         title="Editar coleta"
                       >
                         <Pencil className="w-4 h-4" />
@@ -71,7 +71,7 @@ export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhot
                       <button
                         type="button"
                         onClick={() => onDelete(item.id)}
-                        className="p-1.5 rounded-lg text-yby-danger/80 hover:text-yby-danger hover:bg-red-50 transition-colors"
+                        className="p-1.5 rounded-lg text-yby-danger/80 hover:text-yby-danger hover:bg-red-50 transition-all duration-150 hover:scale-110 active:scale-95 hover:shadow-sm"
                         title="Excluir coleta"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -80,7 +80,7 @@ export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhot
                       <button
                         type="button"
                         onClick={() => onViewPhotos(item)}
-                        className="p-1.5 rounded-lg text-yby-muted hover:text-yby-primary hover:bg-white transition-colors"
+                        className="p-1.5 rounded-lg text-yby-muted hover:text-yby-primary hover:bg-white transition-all duration-150 hover:scale-110 active:scale-95 hover:shadow-sm"
                         title="Ver fotos da coleta"
                       >
                         <ImageIcon className="w-4 h-4" />

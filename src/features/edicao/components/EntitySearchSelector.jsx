@@ -14,7 +14,7 @@ export function EntitySearchSelector({
   }));
 
   return (
-    <div className="bg-white p-5 rounded-2xl border border-yby-border shadow-card mb-6">
+    <div className="bg-white p-5 rounded-2xl border border-yby-border shadow-card mb-6 transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
       <h3 className="text-sm font-extrabold text-yby-heading mb-3">
         {label}
       </h3>

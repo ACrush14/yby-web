@@ -8,7 +8,7 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
   const wasteOptions = wasteList.map((w) => ({ value: w.name, label: w.name }));
 
   return (
-    <div className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border mb-6">
+    <div className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border mb-6 transition-all duration-300 ease-out hover:shadow-card hover:border-yby-primary/30">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <SelectField
           label="PEV"
@@ -47,10 +47,10 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
           type="button"
           onClick={() => filters.handleApplyQuickFilter('month')}
           className={clsx(
-            'px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all',
+            'px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 select-none',
             filters.quickFilter === 'month'
               ? 'bg-yby-light text-yby-primary shadow-sm font-bold border border-yby-primary/30'
-              : 'bg-white text-yby-muted hover:text-yby-heading border border-yby-border'
+              : 'bg-white text-yby-muted hover:text-yby-heading hover:shadow-sm border border-yby-border'
           )}
         >
           Mês atual
@@ -60,10 +60,10 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
           type="button"
           onClick={() => filters.handleApplyQuickFilter('week')}
           className={clsx(
-            'px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all',
+            'px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 select-none',
             filters.quickFilter === 'week'
               ? 'bg-yby-light text-yby-primary shadow-sm font-bold border border-yby-primary/30'
-              : 'bg-white text-yby-muted hover:text-yby-heading border border-yby-border'
+              : 'bg-white text-yby-muted hover:text-yby-heading hover:shadow-sm border border-yby-border'
           )}
         >
           Semana Atual

@@ -37,7 +37,7 @@ export function CooperativePillSelect({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          'inline-flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border min-w-[120px]',
+          'inline-flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border min-w-[120px] hover:scale-[1.03] active:scale-[0.98] select-none hover:shadow-sm',
           value
             ? 'shadow-sm'
             : 'border-dashed border-yby-border text-yby-muted hover:border-yby-primary hover:text-yby-heading bg-white'

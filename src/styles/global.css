@@ -27,3 +27,33 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #7A7067;
 }
+
+/* Animações e Transições Globais para Cards e Elementos Interativos */
+@layer utilities {
+  .yby-card-interactive {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .yby-card-interactive:hover {
+    @apply -translate-y-1 shadow-card-hover border-yby-primary/30;
+  }
+
+  .yby-card-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .yby-card-lift:hover {
+    @apply -translate-y-1.5 shadow-card-elevated border-yby-primary/40;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

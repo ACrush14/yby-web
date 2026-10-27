@@ -31,17 +31,17 @@ export function SecondaryKpiGrid({ metrics }) {
       {cards.map((card) => (
         <div
           key={card.title}
-          className="bg-yby-zebra p-4 sm:p-5 rounded-2xl border border-yby-border/80 relative overflow-hidden"
+          className="group bg-yby-zebra hover:bg-white p-4 sm:p-5 rounded-2xl border border-yby-border/80 relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover hover:border-yby-primary/30 cursor-default select-none"
         >
           {/* Barra de acento colorida no topo */}
           <div
-            className="absolute top-0 left-0 right-0 h-1.5"
+            className="absolute top-0 left-0 right-0 h-1.5 group-hover:h-2 transition-all duration-300"
             style={{ backgroundColor: card.accentColor }}
           />
-          <span className="text-[10px] font-bold tracking-wider text-yby-muted uppercase block">
+          <span className="text-[10px] font-bold tracking-wider text-yby-muted uppercase block group-hover:text-yby-heading transition-colors">
             {card.title}
           </span>
-          <p className="text-lg md:text-xl font-extrabold text-yby-heading mt-1.5 tracking-tight">
+          <p className="text-lg md:text-xl font-extrabold text-yby-heading mt-1.5 tracking-tight group-hover:translate-x-0.5 transition-transform">
             {card.value}
           </p>
         </div>

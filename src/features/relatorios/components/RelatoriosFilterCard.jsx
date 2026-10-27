@@ -18,7 +18,7 @@ export function RelatoriosFilterCard({ filters, cooperatives = [], wasteList = [
   return (
     <form
       onSubmit={filters.handleApplyFilter}
-      className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border mb-6 space-y-4"
+      className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border mb-6 space-y-4 transition-all duration-300 ease-out hover:shadow-card hover:border-yby-primary/30"
     >
       {/* Linha 1 */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

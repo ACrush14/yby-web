@@ -14,7 +14,7 @@ export function MobilePlanningCard({ row, originalRow = {}, cooperatives = [], o
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-yby-border p-4 shadow-card space-y-3">
+    <div className="bg-white rounded-2xl border border-yby-border p-4 shadow-card space-y-3 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-elevated hover:border-yby-primary/30">
       {/* Topo do Card */}
       <div className="flex items-start justify-between gap-2 border-b border-yby-border/60 pb-3">
         <div>

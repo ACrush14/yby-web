@@ -19,10 +19,10 @@ export function PillTabs({ tabs = [], activeTab, onChange, className = '' }) {
             type="button"
             onClick={() => onChange(tab.id)}
             className={clsx(
-              'px-4 py-2 rounded-lg text-sm font-semibold transition-all min-h-[40px] whitespace-nowrap',
+              'px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 min-h-[40px] whitespace-nowrap active:scale-[0.98]',
               isActive
-                ? 'bg-yby-primary text-white shadow-sm'
-                : 'text-yby-muted hover:text-yby-heading hover:bg-yby-surface'
+                ? 'bg-yby-primary text-white shadow-sm -translate-y-0.5'
+                : 'text-yby-muted hover:text-yby-heading hover:bg-yby-surface hover:-translate-y-0.5'
             )}
           >
             {tab.label}
