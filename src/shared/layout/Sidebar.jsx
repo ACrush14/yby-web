@@ -12,6 +12,8 @@ import {
   ChevronRight,
   ChevronDown,
   Settings,
+  Building2,
+  Users,
 } from 'lucide-react';
 import { AccountSettingsModal } from './AccountSettingsModal.jsx';
 import { YbyIcon } from '@/shared/ui/YbyIcon.jsx';
@@ -241,6 +243,66 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                   )}
                   <BarChart2 className="w-5 h-5 flex-shrink-0" />
                   {!collapsed && <span className="whitespace-nowrap">Dashboard</span>}
+                </>
+              )}
+            </NavLink>
+
+            {/* SEÇÃO: PAINEL ADMINISTRATIVO */}
+            <div className="pt-2 pb-1">
+              {!collapsed && (
+                <span className="px-3.5 text-[10px] font-bold text-yby-muted uppercase tracking-wider block">
+                  Administração
+                </span>
+              )}
+              {collapsed && <div className="border-t border-yby-border/60 my-2" />}
+            </div>
+
+            {/* ORGANIZAÇÕES */}
+            <NavLink
+              to="/admin/organizacoes"
+              onClick={onItemClick}
+              className={({ isActive }) =>
+                clsx(
+                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
+                  isActive
+                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
+                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
+                )
+              }
+              title={collapsed ? 'Organizações' : undefined}
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
+                  )}
+                  <Building2 className="w-5 h-5 flex-shrink-0" />
+                  {!collapsed && <span className="whitespace-nowrap">Organizações</span>}
+                </>
+              )}
+            </NavLink>
+
+            {/* USUÁRIOS */}
+            <NavLink
+              to="/admin/usuarios"
+              onClick={onItemClick}
+              className={({ isActive }) =>
+                clsx(
+                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
+                  isActive
+                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
+                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
+                )
+              }
+              title={collapsed ? 'Usuários' : undefined}
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
+                  )}
+                  <Users className="w-5 h-5 flex-shrink-0" />
+                  {!collapsed && <span className="whitespace-nowrap">Usuários</span>}
                 </>
               )}
             </NavLink>

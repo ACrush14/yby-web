@@ -16,6 +16,8 @@ const RelatoriosPage = lazy(() => import('@/features/relatorios/RelatoriosPage.j
 const CadastroPage = lazy(() => import('@/features/cadastro/CadastroPage.jsx').then(m => ({ default: m.CadastroPage })));
 const EdicaoPage = lazy(() => import('@/features/edicao/EdicaoPage.jsx').then(m => ({ default: m.EdicaoPage })));
 const PontoColetaPage = lazy(() => import('@/features/ponto-coleta/PontoColetaPage.jsx').then(m => ({ default: m.PontoColetaPage })));
+const OrganizacoesPage = lazy(() => import('@/features/admin/organizacoes/OrganizacoesPage.jsx').then(m => ({ default: m.OrganizacoesPage })));
+const UsuariosPage = lazy(() => import('@/features/admin/usuarios/UsuariosPage.jsx').then(m => ({ default: m.UsuariosPage })));
 
 function SuspenseWrapper({ children }) {
   const location = useLocation();
@@ -55,6 +57,11 @@ export function AppRoutes() {
           <Route path="/relatorios" element={<RelatoriosPage />} />
           <Route path="/cadastro" element={<CadastroPage />} />
           <Route path="/edicao" element={<EdicaoPage />} />
+          <Route path="/admin/organizacoes" element={<OrganizacoesPage />} />
+          <Route path="/admin/usuarios" element={<UsuariosPage />} />
+          <Route path="/admin" element={<Navigate to="/admin/organizacoes" replace />} />
+          <Route path="/organizacoes" element={<Navigate to="/admin/organizacoes" replace />} />
+          <Route path="/usuarios" element={<Navigate to="/admin/usuarios" replace />} />
         </Route>
 
         {/* Fallback */}

@@ -5,4 +5,6 @@ export { PlanejamentoSkeleton } from './PlanejamentoSkeleton.jsx';
 export { CadastroSkeleton } from './CadastroSkeleton.jsx';
 export { EdicaoSkeleton } from './EdicaoSkeleton.jsx';
 export { PontoColetaSkeleton } from './PontoColetaSkeleton.jsx';
+export { OrganizacoesSkeleton } from './OrganizacoesSkeleton.jsx';
+export { UsuariosSkeleton } from './UsuariosSkeleton.jsx';
 export { RouteSkeleton } from './RouteSkeleton.jsx';
