@@ -139,7 +139,7 @@ export function LandingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-orange/40 cursor-pointer">
+            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-orange/40 cursor-default">
               <div className="w-14 h-14 rounded-2xl bg-[#FDF0EC] text-yby-orange flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
                 <Zap className="w-7 h-7" />
               </div>
@@ -154,7 +154,7 @@ export function LandingPage() {
             </div>
 
             {/* Card 2 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-blue/40 cursor-pointer">
+            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-blue/40 cursor-default">
               <div className="w-14 h-14 rounded-2xl bg-[#E5F1F8] text-yby-blue flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
                 <Droplet className="w-7 h-7" />
               </div>
@@ -169,7 +169,7 @@ export function LandingPage() {
             </div>
 
             {/* Card 3 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-teal/40 cursor-pointer">
+            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-teal/40 cursor-default">
               <div className="w-14 h-14 rounded-2xl bg-[#E9F1ED] text-yby-teal flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
                 <Cloud className="w-7 h-7" />
               </div>
@@ -184,7 +184,7 @@ export function LandingPage() {
             </div>
 
             {/* Card 4 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-primary/40 cursor-pointer">
+            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-primary/40 cursor-default">
               <div className="w-14 h-14 rounded-2xl bg-yby-tint text-yby-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
                 <TreePine className="w-7 h-7" />
               </div>
@@ -221,7 +221,7 @@ export function LandingPage() {
           ].map((item) => (
             <div
               key={item.step}
-              className="group bg-white p-6 rounded-2xl border border-yby-border/80 shadow-card relative text-left transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-primary/40 overflow-hidden cursor-pointer"
+              className="group bg-white p-6 rounded-2xl border border-yby-border/80 shadow-card relative text-left transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-primary/40 overflow-hidden cursor-default"
             >
               {/* Linha de acento animada no topo */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yby-primary to-yby-light opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -253,7 +253,7 @@ export function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between">
+            <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between cursor-default">
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div>
                 <h3 className="text-xl font-bold text-yby-heading mb-3 group-hover:text-yby-primary transition-colors">
@@ -276,7 +276,7 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between">
+            <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between cursor-default">
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div>
                 <h3 className="text-xl font-bold text-yby-heading mb-3 group-hover:text-yby-primary transition-colors">
@@ -299,7 +299,7 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between">
+            <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between cursor-default">
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div>
                 <h3 className="text-xl font-bold text-yby-heading mb-3 group-hover:text-yby-primary transition-colors">
@@ -337,7 +337,7 @@ export function LandingPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-pointer">
+          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-default">
             <div className="w-12 h-12 rounded-xl bg-white border border-yby-border text-yby-primary flex items-center justify-center flex-shrink-0 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-yby-tint group-hover:border-yby-primary/40">
               <Calendar className="w-6 h-6" />
             </div>
@@ -354,7 +354,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-pointer">
+          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-default">
             <div className="w-12 h-12 rounded-xl bg-white border border-yby-border text-yby-primary flex items-center justify-center flex-shrink-0 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-yby-tint group-hover:border-yby-primary/40">
               <FileSpreadsheet className="w-6 h-6" />
             </div>
@@ -371,7 +371,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-pointer">
+          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-default">
             <div className="w-12 h-12 rounded-xl bg-white border border-yby-border text-yby-primary flex items-center justify-center flex-shrink-0 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-yby-tint group-hover:border-yby-primary/40">
               <BarChart3 className="w-6 h-6" />
             </div>
@@ -388,7 +388,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-pointer">
+          <div className="group p-6 bg-yby-surface/40 border border-yby-border rounded-2xl flex gap-4 transition-all duration-300 ease-out hover:bg-white hover:-translate-y-1.5 hover:shadow-card-hover hover:border-yby-primary/40 cursor-default">
             <div className="w-12 h-12 rounded-xl bg-white border border-yby-border text-yby-primary flex items-center justify-center flex-shrink-0 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-yby-tint group-hover:border-yby-primary/40">
               <Share2 className="w-6 h-6" />
             </div>

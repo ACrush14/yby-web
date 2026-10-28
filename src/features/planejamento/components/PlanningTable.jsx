@@ -13,7 +13,7 @@ export function PlanningTable({ rows = [], originalRows = [], cooperatives = [],
   ];
 
   return (
-    <div className="w-full bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
+    <div className="w-full bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 cursor-default">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>

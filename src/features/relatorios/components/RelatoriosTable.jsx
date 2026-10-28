@@ -1,11 +1,12 @@
 import React from 'react';
 import { Pencil, Trash2, Image as ImageIcon } from 'lucide-react';
+import { toast } from 'sonner';
 import { Badge } from '@/shared/ui/Badge.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
 
 export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhotos }) {
   return (
-    <div className="bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30">
+    <div className="bg-white rounded-2xl border border-yby-border overflow-hidden shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 cursor-default">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -99,7 +100,11 @@ export function RelatoriosTable({ collections = [], onEdit, onDelete, onViewPhot
         <span className="text-xs text-yby-muted">
           Mostrando {collections.length} de 466 registros
         </span>
-        <Button variant="outline" size="sm">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => toast.info('Todos os 466 registros disponíveis já estão carregados.')}
+        >
           Carregar mais
         </Button>
       </div>

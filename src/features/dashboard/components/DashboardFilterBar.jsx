@@ -8,7 +8,7 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
   const wasteOptions = wasteList.map((w) => ({ value: w.name, label: w.name }));
 
   return (
-    <div className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border mb-6 transition-all duration-300 ease-out hover:shadow-card hover:border-yby-primary/30">
+    <div className="bg-yby-surface p-4 sm:p-5 rounded-2xl border border-yby-border mb-6 transition-all duration-300 ease-out hover:shadow-card hover:border-yby-primary/30 cursor-default">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <SelectField
           label="PEV"

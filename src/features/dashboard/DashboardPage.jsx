@@ -60,7 +60,7 @@ export function DashboardPage() {
 
       {/* Linha 1 de Gráficos: Coleta em peso (65%) + Rosca de Resíduos (35%) */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <div className="lg:col-span-2 bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1">
+        <div className="lg:col-span-2 bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">
               {metrics.periodType === 'week' ? 'Coleta em peso (kg) na semana' : 'Coleta em peso (kg) por mês'}
@@ -74,7 +74,7 @@ export function DashboardPage() {
           <AreaMetricChart data={metrics.monthlyWeight} height={260} />
         </div>
 
-        <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1">
+        <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">Tipo de resíduo coletado</h3>
             <p className="text-xs text-yby-muted">
@@ -94,7 +94,7 @@ export function DashboardPage() {
 
       {/* Linha 2 de Gráficos: Água (50%) + Energia (50%) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1">
+        <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">
               {metrics.periodType === 'week' ? 'Economia de água na semana' : 'Economia de água por mês'}
@@ -111,7 +111,7 @@ export function DashboardPage() {
           />
         </div>
 
-        <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1">
+        <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">
               {metrics.periodType === 'week' ? 'Consumo de energia na semana' : 'Consumo de energia por mês'}
