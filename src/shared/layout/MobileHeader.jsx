@@ -22,10 +22,10 @@ export function MobileHeader({ onOpenDrawer }) {
       <button
         type="button"
         onClick={onOpenDrawer}
-        className="w-10 h-10 rounded-lg bg-white border border-yby-border flex items-center justify-center text-yby-heading hover:bg-yby-tint transition-colors shadow-sm"
+        className="w-10 h-10 rounded-xl bg-white border border-yby-border flex items-center justify-center text-yby-heading hover:bg-yby-tint active:scale-90 active:bg-yby-tint/80 transition-all duration-150 shadow-sm select-none"
         aria-label="Abrir menu lateral"
       >
-        <Menu className="w-5 h-5" />
+        <Menu className="w-5 h-5 transition-transform duration-150 active:rotate-12" />
       </button>
     </header>
   );

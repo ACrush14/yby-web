@@ -57,6 +57,63 @@
   }
 }
 
+/* Animações ágeis e suaves para o Drawer Lateral Mobile */
+@keyframes drawerSlideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawerSlideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes drawerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawerFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-drawer-slide {
+  animation: drawerSlideIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+.animate-drawer-slide-out {
+  animation: drawerSlideOut 0.2s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+  will-change: transform;
+}
+
+.animate-drawer-fade {
+  animation: drawerFadeIn 0.22s ease-out forwards;
+  will-change: opacity;
+}
+
+.animate-drawer-fade-out {
+  animation: drawerFadeOut 0.18s ease-in forwards;
+  will-change: opacity;
+}
+
 .yby-skeleton {
   position: relative;
   overflow: hidden;
