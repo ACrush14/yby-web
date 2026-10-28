@@ -25,10 +25,36 @@ describe('userRepository - Gestão de Usuários', () => {
     expect(clientes.every((u) => u.role === USER_ROLES.CLIENTE.id)).toBe(true);
   });
 
-  it('deve buscar usuário por nome ou e-mail', async () => {
-    const result = await userRepository.getAll({ search: 'mariana@somosyby.com' });
-    expect(result.length).toBeGreaterThan(0);
-    expect(result[0].email).toBe('mariana@somosyby.com');
+  it('deve filtrar usuários por organização vinculada', async () => {
+    const list = await userRepository.getAll({ organizationId: 'coop-1' });
+    expect(list.length).toBeGreaterThan(0);
+    expect(list.every((u) => u.organizationId === 'coop-1')).toBe(true);
+  });
+
+  it('deve suportar criação de usuários com os 5 papéis oficiais vinculados a organizações', async () => {
+    const roles = [
+      USER_ROLES.GESTOR_YBY.id,
+      USER_ROLES.COLABORADOR_YBY.id,
+      USER_ROLES.PRESIDENTE_COOPERATIVA.id,
+      USER_ROLES.COLABORADOR_COOPERATIVA.id,
+      USER_ROLES.CLIENTE.id,
+    ];
+
+    for (const roleId of roles) {
+      const created = await userRepository.create({
+        name: `Usuário ${roleId}`,
+        email: `${roleId}@exemplo.com`,
+        role: roleId,
+        organizationId: 'org-test',
+        organizationName: 'Organização Teste',
+        organizationType: 'Cliente',
+      });
+      expect(created.role).toBe(roleId);
+      expect(created.organizationId).toBe('org-test');
+
+      // Limpa após teste
+      await userRepository.delete(created.id);
+    }
   });
 
   it('deve criar, atualizar e excluir um usuário', async () => {

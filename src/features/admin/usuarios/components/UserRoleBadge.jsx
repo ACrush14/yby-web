@@ -19,6 +19,7 @@ export function UserRoleBadge({ roleId, className = '' }) {
         color: theme.color,
         borderColor: theme.border,
       }}
+      title={theme.label}
     >
       <span
         className="w-1.5 h-1.5 rounded-full mr-1.5 flex-shrink-0"

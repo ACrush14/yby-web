@@ -44,6 +44,7 @@ export function OrganizationFilterBar({ filters }) {
           options={typeOptions}
           value={filters.type}
           onChange={(e) => filters.setType(e.target.value)}
+          placeholder={null}
         />
 
         {/* Filtro por Status */}
@@ -52,6 +53,7 @@ export function OrganizationFilterBar({ filters }) {
           options={statusOptions}
           value={filters.status}
           onChange={(e) => filters.setStatus(e.target.value)}
+          placeholder={null}
         />
       </div>
 

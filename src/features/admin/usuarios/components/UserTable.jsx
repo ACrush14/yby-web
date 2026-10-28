@@ -83,6 +83,7 @@ export function UserTable({
                         onClick={() => onEdit(user)}
                         className="p-1.5 rounded-lg text-yby-muted hover:text-yby-heading hover:bg-white transition-all duration-150 hover:scale-110 active:scale-95 shadow-sm"
                         title="Editar usuário"
+                        aria-label={`Editar usuário ${user.name}`}
                       >
                         <Pencil className="w-4 h-4" />
                       </button>
@@ -92,6 +93,7 @@ export function UserTable({
                         onClick={() => onDelete(user)}
                         className="p-1.5 rounded-lg text-yby-danger/80 hover:text-yby-danger hover:bg-red-50 transition-all duration-150 hover:scale-110 active:scale-95 shadow-sm"
                         title="Excluir usuário"
+                        aria-label={`Excluir usuário ${user.name}`}
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>

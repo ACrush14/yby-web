@@ -4,6 +4,7 @@ import { InputField } from '@/shared/ui/InputField.jsx';
 import { SelectField } from '@/shared/ui/SelectField.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
 import { USER_ROLE_LIST, USER_ROLES } from '@/domain/constants/userRoles.js';
+import { toast } from 'sonner';
 
 export function UserModal({ user, organizations = [], onClose, onSave, saving }) {
   const isEditing = Boolean(user);
@@ -23,7 +24,7 @@ export function UserModal({ user, organizations = [], onClose, onSave, saving })
       setName('');
       setEmail('');
       setRole(USER_ROLES.COLABORADOR_YBY.id);
-      setOrganizationId(organizations[0]?.id || '');
+      setOrganizationId('');
     }
   }, [user, organizations]);
 
@@ -39,7 +40,18 @@ export function UserModal({ user, organizations = [], onClose, onSave, saving })
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim()) return;
+    if (!name.trim()) {
+      toast.error('Informe o nome do usuário.');
+      return;
+    }
+    if (!email.trim()) {
+      toast.error('Informe o e-mail do usuário.');
+      return;
+    }
+    if (!organizationId) {
+      toast.error('Selecione uma organização vinculada.');
+      return;
+    }
 
     onSave({
       name: name.trim(),
@@ -103,6 +115,8 @@ export function UserModal({ user, organizations = [], onClose, onSave, saving })
             options={roleOptions}
             value={role}
             onChange={(e) => setRole(e.target.value)}
+            placeholder={null}
+            helperText="Define as permissões e o nível de acesso do usuário dentro da plataforma."
           />
 
           <SelectField
@@ -111,6 +125,8 @@ export function UserModal({ user, organizations = [], onClose, onSave, saving })
             options={orgOptions}
             value={organizationId}
             onChange={(e) => setOrganizationId(e.target.value)}
+            placeholder="Selecione uma organização..."
+            helperText="Identifica a cooperativa ou cliente ao qual o usuário está vinculado."
           />
 
           {/* Botões de Ação */}

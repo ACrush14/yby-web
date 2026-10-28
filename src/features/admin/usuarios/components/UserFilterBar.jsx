@@ -43,6 +43,7 @@ export function UserFilterBar({ filters, organizations = [] }) {
           options={roleOptions}
           value={filters.role}
           onChange={(e) => filters.setRole(e.target.value)}
+          placeholder={null}
         />
 
         {/* Filtro por Organização */}
@@ -51,6 +52,7 @@ export function UserFilterBar({ filters, organizations = [] }) {
           options={orgOptions}
           value={filters.organizationId}
           onChange={(e) => filters.setOrganizationId(e.target.value)}
+          placeholder={null}
         />
       </div>
 

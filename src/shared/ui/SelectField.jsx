@@ -10,6 +10,7 @@ export const SelectField = React.forwardRef(function SelectField(
     label,
     required = false,
     error,
+    helperText,
     options = [],
     placeholder = 'Selecione',
     className = '',
@@ -58,7 +59,11 @@ export const SelectField = React.forwardRef(function SelectField(
         </div>
       </div>
 
-      {error && <span className="text-xs text-yby-danger font-medium">{error}</span>}
+      {error ? (
+        <span className="text-xs text-yby-danger font-medium">{error}</span>
+      ) : helperText ? (
+        <span className="text-xs text-yby-muted">{helperText}</span>
+      ) : null}
     </div>
   );
 });

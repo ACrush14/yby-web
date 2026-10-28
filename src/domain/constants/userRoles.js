@@ -23,7 +23,7 @@ export const USER_ROLES = {
   PRESIDENTE_COOPERATIVA: {
     id: 'presidente_cooperativa',
     label: 'Presidente da Cooperativa',
-    shortLabel: 'Presidente',
+    shortLabel: 'Presidente da Cooperativa',
     color: '#005885',
     bg: '#E5F1F8',
     border: '#B3D7EB',
@@ -31,7 +31,7 @@ export const USER_ROLES = {
   COLABORADOR_COOPERATIVA: {
     id: 'colaborador_cooperativa',
     label: 'Colaborador da Cooperativa — Worker da Cooperativa',
-    shortLabel: 'Colaborador Coop',
+    shortLabel: 'Colaborador da Cooperativa',
     color: '#E65124',
     bg: '#FDF0EC',
     border: '#F8C8BA',
