@@ -4,6 +4,7 @@ let cooperativesStore = [...MOCK_COOPERATIVES];
 
 export const cooperativeRepository = {
   async getAll() {
+    await new Promise((resolve) => setTimeout(resolve, 250));
     return [...cooperativesStore];
   },
 

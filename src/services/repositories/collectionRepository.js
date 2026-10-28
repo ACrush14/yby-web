@@ -4,6 +4,9 @@ let collectionsStore = [...MOCK_COLLECTIONS];
 
 export const collectionRepository = {
   async getFiltered({ search = '', cooperative = '', waste = '', startDate = '', endDate = '' } = {}) {
+    // Simula latência de rede realista para feedback visual de skeleton
+    await new Promise((resolve) => setTimeout(resolve, 280));
+
     return collectionsStore.filter((c) => {
       if (search) {
         const q = search.toLowerCase();

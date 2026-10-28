@@ -8,6 +8,7 @@ let clientsStore = [...MOCK_CLIENTS];
  */
 export const clientRepository = {
   async getAll() {
+    await new Promise((resolve) => setTimeout(resolve, 250));
     return [...clientsStore];
   },
 

@@ -3,6 +3,8 @@ import { FileSpreadsheet, Download } from 'lucide-react';
 import { useRelatoriosController } from './hooks/useRelatoriosController.js';
 import { PageHeader } from '@/shared/layout/PageHeader.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
+import { RelatoriosSkeleton } from '@/shared/ui/skeletons/RelatoriosSkeleton.jsx';
+import { Skeleton } from '@/shared/ui/Skeleton.jsx';
 import { RelatoriosFilterCard } from './components/RelatoriosFilterCard.jsx';
 import { RelatoriosTable } from './components/RelatoriosTable.jsx';
 import { EditCollectionModal } from './components/EditCollectionModal.jsx';
@@ -18,6 +20,10 @@ export function RelatoriosPage() {
     modals,
     actions,
   } = useRelatoriosController();
+
+  if (loading && !collections?.length) {
+    return <RelatoriosSkeleton />;
+  }
 
   return (
     <div className="space-y-6">
@@ -58,8 +64,20 @@ export function RelatoriosPage() {
 
       {/* Tabela de Coletas com Zebra Striping */}
       {loading ? (
-        <div className="flex items-center justify-center min-h-[300px] bg-white rounded-2xl border border-yby-border">
-          <span className="text-sm text-yby-muted">Carregando registros de coletas...</span>
+        <div className="bg-white rounded-2xl border border-yby-border shadow-card p-6 divide-y divide-yby-border/40">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="py-3.5 flex items-center justify-between gap-4">
+              <Skeleton variant="text" className="w-12 h-4" />
+              <Skeleton variant="text" className="w-36 h-4" />
+              <Skeleton variant="rectangular" className="w-24 h-6 rounded-full" />
+              <Skeleton variant="text" className="w-20 h-4" />
+              <Skeleton variant="text" className="w-24 h-4 hidden sm:block" />
+              <div className="flex items-center gap-2">
+                <Skeleton variant="circular" className="w-8 h-8" />
+                <Skeleton variant="circular" className="w-8 h-8" />
+              </div>
+            </div>
+          ))}
         </div>
       ) : (
         <RelatoriosTable

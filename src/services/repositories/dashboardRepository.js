@@ -19,6 +19,9 @@ export const dashboardRepository = {
    * @returns {Promise<Object>}
    */
   async getMetrics(filters = {}) {
+    // Simula latência de rede realista para feedback visual de skeleton
+    await new Promise((resolve) => setTimeout(resolve, 280));
+
     const isWeek =
       filters.quickFilter === 'week' ||
       (filters.startDate &&

@@ -3,6 +3,7 @@ import { Download, Share2 } from 'lucide-react';
 import { useDashboardController } from './hooks/useDashboardController.js';
 import { PageHeader } from '@/shared/layout/PageHeader.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
+import { DashboardSkeleton } from '@/shared/ui/skeletons/DashboardSkeleton.jsx';
 import { DashboardFilterBar } from './components/DashboardFilterBar.jsx';
 import { PrimaryKpiGrid } from './components/PrimaryKpiGrid.jsx';
 import { SecondaryKpiGrid } from './components/SecondaryKpiGrid.jsx';
@@ -14,11 +15,7 @@ export function DashboardPage() {
   const { metrics, clients, wasteList, loading, filters, actions } = useDashboardController();
 
   if (loading || !metrics) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <span className="text-sm text-yby-muted font-medium">Carregando indicadores ambientais...</span>
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (

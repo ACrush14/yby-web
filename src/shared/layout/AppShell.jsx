@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { Sidebar } from './Sidebar.jsx';
 import { MobileHeader } from './MobileHeader.jsx';
+import { RouteSkeleton } from '@/shared/ui/skeletons/RouteSkeleton.jsx';
 
 /**
  * Shell principal para as páginas autenticadas da aplicação.
  * Responsivo: Sidebar retrátil no Desktop e Drawer no Celular.
+ * Inclui transição suave com Skeletons entre páginas.
  */
 export function AppShell() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const [isNavigating, setIsNavigating] = useState(false);
+  const previousPath = useRef(location.pathname);
+
+  useEffect(() => {
+    if (previousPath.current !== location.pathname) {
+      previousPath.current = location.pathname;
+      setIsNavigating(true);
+      const timer = setTimeout(() => {
+        setIsNavigating(false);
+      }, 320);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname]);
 
   return (
     <div className="flex h-screen bg-white overflow-hidden">
@@ -46,7 +62,15 @@ export function AppShell() {
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
         <MobileHeader onOpenDrawer={() => setMobileOpen(true)} />
         <main className="flex-1 p-4 md:p-8 lg:p-10 max-w-7xl w-full mx-auto">
-          <Outlet />
+          {isNavigating ? (
+            <div className="animate-in fade-in duration-150">
+              <RouteSkeleton pathname={location.pathname} />
+            </div>
+          ) : (
+            <div className="animate-in fade-in duration-200">
+              <Outlet />
+            </div>
+          )}
         </main>
       </div>
     </div>

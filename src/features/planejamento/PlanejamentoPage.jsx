@@ -3,6 +3,7 @@ import { Save, Search } from 'lucide-react';
 import { usePlanejamentoController } from './hooks/usePlanejamentoController.js';
 import { PageHeader } from '@/shared/layout/PageHeader.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
+import { PlanejamentoSkeleton } from '@/shared/ui/skeletons/PlanejamentoSkeleton.jsx';
 import { CooperativeLegend } from './components/CooperativeLegend.jsx';
 import { PlanningTable } from './components/PlanningTable.jsx';
 import { MobilePlanningCard } from './components/MobilePlanningCard.jsx';
@@ -22,11 +23,7 @@ export function PlanejamentoPage() {
   } = usePlanejamentoController();
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <span className="text-sm text-yby-muted font-medium">Carregando planejamento semanal...</span>
-      </div>
-    );
+    return <PlanejamentoSkeleton />;
   }
 
   return (

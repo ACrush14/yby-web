@@ -3,6 +3,7 @@ import { Search } from 'lucide-react';
 import { useEdicaoController } from './hooks/useEdicaoController.js';
 import { PageHeader } from '@/shared/layout/PageHeader.jsx';
 import { PillTabs } from '@/shared/ui/PillTabs.jsx';
+import { EdicaoSkeleton } from '@/shared/ui/skeletons/EdicaoSkeleton.jsx';
 import { EntitySearchSelector } from './components/EntitySearchSelector.jsx';
 import { EditClientForm } from './components/EditClientForm.jsx';
 import { EmptyState } from '@/shared/ui/EmptyState.jsx';
@@ -14,6 +15,7 @@ export function EdicaoPage() {
     clients,
     cooperatives,
     selectedEntity,
+    loading,
     saving,
     handleSelectEntity,
     handleClearSelection,
@@ -25,6 +27,10 @@ export function EdicaoPage() {
     { id: 'cooperativa', label: 'Cooperativa' },
     { id: 'gestor', label: 'Gestor' },
   ];
+
+  if (loading) {
+    return <EdicaoSkeleton />;
+  }
 
   return (
     <div className="space-y-6">
