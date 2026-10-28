@@ -1,10 +1,10 @@
-# 📋 TODO — Painel Administrativo Yby Impacta (Organizações & Usuários)
+# TODO — Painel Administrativo Yby Impacta (Organizações e Usuários)
 
 Este documento centraliza todos os requisitos, tarefas, fluxos visuais e critérios de aceitação para o desenvolvimento e revisão do **Painel Administrativo do Yby Impacta**, contemplando os módulos de **Organizações** e **Usuários**.
 
 ---
 
-## 🎯 Visão Geral e Objetivos
+## Visão Geral e Objetivos
 
 * **Objetivo Geral:** Desenvolver a estrutura visual e os fluxos de navegação do **Painel Administrativo do Yby Impacta**, centralizando o acesso às funcionalidades administrativas essenciais.
 * **Módulos Principais:**
@@ -19,12 +19,12 @@ Este documento centraliza todos os requisitos, tarefas, fluxos visuais e critér
 
 ---
 
-## 📦 MÓDULO 1: Estrutura Principal e Navegação do Painel Administrativo
+## MODULO 1: Estrutura Principal e Navegação do Painel Administrativo
 
 ### Objetivo do Módulo
 Criar a estrutura central do painel administrativo, disponibilizando navegação clara e coesa para os módulos de **Organizações** e **Usuários**, mantendo a identidade visual e ergonomia em qualquer dispositivo.
 
-### Checklist de Tarefas & Verificação:
+### Checklist de Tarefas e Verificação:
 
 #### 1.1. Arquitetura de Layout e Navegação
 - [ ] **Definir e criar a estrutura visual principal do Painel Administrativo:**
@@ -41,7 +41,7 @@ Criar a estrutura central do painel administrativo, disponibilizando navegação
   - [ ] Sidebar retrátil (`72px`) ou Drawer deslizante com ícones destacados.
   - [ ] Filtros reorganizados em 2 colunas.
 - [ ] **Adaptação para Celular (`< 768px`):**
-  - [ ] Cabeçalho compacto com Drawer lateral acionado por menu hamburguer (`☰`).
+  - [ ] Cabeçalho compacto com Drawer lateral acionado por menu hamburguer.
   - [ ] Acesso aos módulos com alvos de toque amplos (*tap targets* `>= 44px`).
   - [ ] Transição fluida entre abas/módulos sem rolagem horizontal indesejada.
 
@@ -52,12 +52,12 @@ Criar a estrutura central do painel administrativo, disponibilizando navegação
 
 ---
 
-## 🏢 MÓDULO 2: Gerenciamento de Organizações
+## MODULO 2: Gerenciamento de Organizações
 
 ### Objetivo do Módulo
 Proporcionar ao administrador uma experiência simples, intuitiva e organizada para consultar, cadastrar, editar e excluir organizações (Cooperativas e Clientes) cadastradas na plataforma.
 
-### Checklist de Tarefas & Verificação:
+### Checklist de Tarefas e Verificação:
 
 #### 2.1. Listagem de Organizações (Interface Principal)
 - [ ] **Construir a tabela/grade de listagem de organizações:**
@@ -66,11 +66,11 @@ Proporcionar ao administrador uma experiência simples, intuitiva e organizada p
     - [ ] `Cooperativa` (badge em tom verde floresta `#267332` ou azul).
     - [ ] `Cliente` (badge em tom contrastante/bege `#E6DFD3`).
   - [ ] Coluna **Status** com representação visual clara:
-    - [ ] `Ativa` (pílula verde com indicador `● Ativa`).
-    - [ ] `Inativa` (pílula cinza/neutra com indicador `○ Inativa`).
+    - [ ] `Ativa` (pílula verde com indicador de status ativo).
+    - [ ] `Inativa` (pílula cinza/neutra com indicador de status inativo).
   - [ ] Coluna **Ações** com botões táteis:
-    - [ ] Ícone/botão de **Editar** (`✏️`).
-    - [ ] Ícone/botão de **Excluir** (`🗑️` em tom destrutivo/vermelho).
+    - [ ] Ícone/botão de **Editar**.
+    - [ ] Ícone/botão de **Excluir** (em tom destrutivo/vermelho).
 - [ ] **Controles e Filtros da Listagem:**
   - [ ] Botão primário destacado: `+ Adicionar organização` (ou `Nova organização`).
   - [ ] **Barra de busca:** localizar por nome da organização ou dígitos do CNPJ.
@@ -109,7 +109,7 @@ Proporcionar ao administrador uma experiência simples, intuitiva e organizada p
 
 #### 2.4. Ação de Exclusão de Organização
 - [ ] **Criar modal de confirmação visual antes da exclusão:**
-  - [ ] Modal de alerta com ícone de atenção/perigo (`⚠️` ou `🗑️`).
+  - [ ] Modal de alerta com ícone de atenção/perigo.
   - [ ] Título claro: *"Excluir organização?"*.
   - [ ] Mensagem de confirmação citando expressamente o nome da organização (ex: *"Tem certeza que deseja excluir 'Cooperativa Rosa Virginia'? Esta ação não poderá ser desfeita."*).
   - [ ] Botões: `Cancelar` (foco padrão, evita exclusões acidentais) e `Sim, excluir` (vermelho destrutivo).
@@ -124,12 +124,12 @@ Proporcionar ao administrador uma experiência simples, intuitiva e organizada p
 
 ---
 
-## 👥 MÓDULO 3: Gerenciamento de Usuários
+## MODULO 3: Gerenciamento de Usuários
 
 ### Objetivo do Módulo
 Permitir que o administrador visualize os usuários cadastrados, identifique seus papéis no sistema por meio de etiquetas visuais e realize a criação e vinculação de usuários às organizações existentes.
 
-### Checklist de Tarefas & Verificação:
+### Checklist de Tarefas e Verificação:
 
 #### 3.1. Listagem de Usuários (Interface Principal)
 - [ ] **Construir a tabela/grade de listagem de usuários:**
@@ -144,8 +144,8 @@ Permitir que o administrador visualize os usuários cadastrados, identifique seu
   - [ ] Coluna **Organização Vinculada:**
     - [ ] Nome da Cooperativa ou do Cliente ao qual o usuário pertence (com ícone indicativo do tipo).
   - [ ] Coluna **Ações:**
-    - [ ] Botão/ícone visual de **Editar** (`✏️`).
-    - [ ] Botão/ícone de **Excluir** (`🗑️`).
+    - [ ] Botão/ícone visual de **Editar**.
+    - [ ] Botão/ícone de **Excluir**.
 - [ ] **Controles e Filtros da Listagem:**
   - [ ] Botão primário destacado: `+ Adicionar usuário` (ou `Novo usuário`).
   - [ ] **Barra de busca:** localizar por nome do usuário ou e-mail.
@@ -183,7 +183,7 @@ Permitir que o administrador visualize os usuários cadastrados, identifique seu
 
 #### 3.3. Edição e Exclusão de Usuários
 - [ ] **Ação de Edição de Usuários:**
-  - [ ] O botão de editar (`✏️`) deve estar visível e alinhado na listagem.
+  - [ ] O botão de editar deve estar visível e alinhado na listagem.
   - [ ] *Nota da especificação:* Nesta etapa inicial, o botão de editar é representado visualmente na tabela/card.
 - [ ] **Ação de Exclusão de Usuários:**
   - [ ] Botão de excluir aciona modal de confirmação visual antes da remoção definitiva do usuário.
@@ -201,7 +201,44 @@ Permitir que o administrador visualize os usuários cadastrados, identifique seu
 
 ---
 
-## 🎨 MÓDULO 4: Diretrizes de UX/UI, Design System & Consistência
+## MODULO 4: Diretrizes de UX/UI, Design System e Consistência
+
+### Checklist de Qualidade e Conformidade:
+- [ ] **Paleta de Cores do Yby Impacta:**
+  - [ ] Verde Floresta / Primário: `#267332`
+  - [ ] Verde Escuro / Heading: `#3D2E28` e `#2A5C43`
+  - [ ] Fundo Creme / Superfície: `#F4EFE6` e `#FFFFFF`
+  - [ ] Borda / Divisórias: `#E6DFD3`
+  - [ ] Acento Destrutivo (Exclusão): `#E65124` / `#DC2626`
+- [ ] **Tipografia e Acessibilidade:**
+  - [ ] Fonte base: `Plus Jakarta Sans` ou `Inter` com hierarquia clara (`text-2xl`, `text-lg`, `text-sm`, `text-xs`).
+  - [ ] Contraste visual adequado em todos os chips, textos e botões (conforme WCAG AA).
+  - [ ] Inputs com altura mínima de toque de `44px` a `48px` no mobile.
+  - [ ] Estados de foco (`focus:ring-2 focus:ring-yby-primary`) visíveis para navegação por teclado.
+- [ ] **Componentes Reutilizáveis:**
+  - [ ] `InputField`: com suporte a máscara de CNPJ e estados de erro.
+  - [ ] `SelectField`: com opções formatadas e acessíveis.
+  - [ ] `SwitchToggle`: para estado ativo/inativo da organização.
+  - [ ] `BadgeChip`: com cores mapeadas por papel de usuário e tipo de organização.
+  - [ ] `ConfirmModal`: com foco seguro no botão de cancelamento.
+  - [ ] `EmptyState`: para buscas e filtros sem retorno.
+
+---
+
+## MODULO 5: Validação, Testes e Critérios de Conclusão
+
+- [ ] **Validação em Resoluções (Desktop, Tablet e Celular):**
+  - [ ] Desktop (`1440px` e `1280px`): tabelas completas, filtros em linha, paginação visível.
+  - [ ] Tablet (`768px` a `1023px`): comportamento responsivo sem sobreposição de colunas.
+  - [ ] Mobile (`375px` e `414px`): cards táteis, drawer lateral, modais em tela cheia/bottom sheet.
+- [ ] **Validação de Fluxos Administrativos:**
+  - [ ] Alternância entre listagem, cadastro e edição sem recarregamento de página.
+  - [ ] Sincronização de busca em tempo real com debounce.
+  - [ ] Confirmação de exclusão funcional para Organizações e Usuários.
+  - [ ] Teste de build de produção (`npm run build`) aprovado com zero erros.
+- [ ] **Revisão e Disponibilização:**
+  - [ ] Interface e protótipo revisados com a equipe.
+  - [ ] Documentação de rotas e componentes atualizada no repositório.
 
 ### Checklist de Qualidade e Conformidade:
 - [ ] **Paleta de Cores do Yby Impacta:**

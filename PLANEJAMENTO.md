@@ -1,10 +1,10 @@
-# 🌱 Projeto YBY — Planejamento e Documentação Geral
+# Projeto YBY — Planejamento e Documentação Geral
 
 Este repositório contém o planejamento completo, documentação de domínio, mapeamento de telas, padrões de engenharia de software (**SOLID & GRASP**), estratégia de responsividade mobile e especificações do novo design para a **reformulação completa da plataforma YBY** (`somosyby.com` e `somosyby.com.br`) em **JavaScript**.
 
 ---
 
-## 🔗 Links de Referência
+## Links de Referência
 
 * **Deploy Vercel (Produção):** [`https://yby-web.vercel.app`](https://yby-web.vercel.app)
 * **Repositório GitHub:** [`https://github.com/ACrush14/yby-web`](https://github.com/ACrush14/yby-web)
@@ -17,7 +17,7 @@ Este repositório contém o planejamento completo, documentação de domínio, m
 
 ---
 
-## 📂 Índice Completo da Documentação (`.md`)
+## Índice Completo da Documentação (.md)
 
 1. [**01 - Visão Geral, Domínio e Regras de Negócio**](./docs/01-VISAO-GERAL-E-DOMINIO.md)
    * O que é a YBY Soluções Sustentáveis
@@ -68,7 +68,7 @@ Este repositório contém o planejamento completo, documentação de domínio, m
 
 ---
 
-## ✅ Status do Planejamento & Implementação
+## Status do Planejamento e Implementação
 
 - [x] Absorção do contexto institucional (`somosyby.com.br`) e da plataforma (`somosyby.com`)
 - [x] Engenharia reversa e mapeamento de 100% das telas, filtros, botões, modais e rotas do sistema atual
@@ -88,7 +88,7 @@ Este repositório contém o planejamento completo, documentação de domínio, m
     - Submenus expansíveis em acordeão para **Cadastro** (`Cliente`, `Cooperativa`, `Gestor`) posicionado antes de Planejamento.
     - Submenus expansíveis em acordeão para **Edição** (`Cliente`, `Cooperativa`, `Gestor`).
     - Sincronização bidirecional com a URL via `useSearchParams` (`?tab=cliente|cooperativa|gestor`).
-    - **Card de Perfil do Usuário** no rodapé da Sidebar (acima de "Sair") exibindo avatar/foto, nome do usuário, e-mail/login e botão de Configurações (`⚙️`).
+    - **Card de Perfil do Usuário** no rodapé da Sidebar (acima de "Sair") exibindo avatar/foto, nome do usuário, e-mail/login e botão de Configurações.
     - **Modal de Configurações da Conta (`AccountSettingsModal.jsx`)**: troca interativa de foto de perfil, alteração de nome, login/e-mail, e atualização de senha (com confirmação e feedback Sonner).
   - [x] **Identidade Visual Autêntica (Símbolo Oficial do YBY):**
     - Substituição de 100% dos emojis provisórios (`🌱`) pelo símbolo oficial e autêntico da YBY extraído do Figma e da plataforma.
