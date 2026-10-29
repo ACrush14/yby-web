@@ -16,6 +16,9 @@ import {
   Share2,
 } from 'lucide-react';
 import { Button } from '@/shared/ui/Button.jsx';
+import { HeroBannerCarousel } from './components/HeroBannerCarousel.jsx';
+import { LandingFooter } from './components/LandingFooter.jsx';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton.jsx';
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -123,6 +126,9 @@ export function LandingPage() {
             </Button>
           </div>
         </div>
+
+        {/* Carrossel Oficial com as Imagens do Hero do somosyby.com.br */}
+        <HeroBannerCarousel />
       </section>
 
       {/* Seção Impacto Mensurável */}
@@ -447,20 +453,11 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Rodapé */}
-      <footer className="mt-auto border-t border-yby-border bg-yby-cream/50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-yby-muted">
-          <div className="flex items-center gap-2">
-            <YbyIcon variant="dark" className="w-5 h-5" />
-            <span className="font-extrabold text-lg text-yby-heading">YBY</span>
-            <span className="text-yby-muted ml-2">© {new Date().getFullYear()} YBY Soluções Sustentáveis. Todos os direitos reservados.</span>
-          </div>
-          <div className="flex items-center gap-6 font-semibold">
-            <button onClick={() => navigate('/signIn')} className="hover:text-yby-primary">Login Administrativo</button>
-            <button onClick={() => navigate('/signIn-client')} className="hover:text-yby-primary">Acesso Cooperativa</button>
-          </div>
-        </div>
-      </footer>
+      {/* Rodapé Completo com Contato, Email, Redes Sociais e Botão de WhatsApp */}
+      <LandingFooter />
+
+      {/* Botão Flutuante de WhatsApp para Contato Direto */}
+      <FloatingWhatsAppButton />
     </div>
   );
 }
