@@ -99,11 +99,11 @@ export function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-b from-yby-cream/60 via-yby-cream/20 to-white relative overflow-hidden">
+      <section className="pt-16 md:pt-24 pb-0 text-center bg-gradient-to-b from-yby-cream/60 via-yby-cream/20 to-white relative overflow-hidden">
         {/* Elemento de iluminação ambiente no fundo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-yby-tint/40 to-yby-light/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-yby-tint/40 to-yby-light/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow" />
 
-        <div className="max-w-4xl mx-auto space-y-6 relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-yby-light text-yby-primary text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-300 hover:scale-105 hover:border-yby-primary/40 hover:shadow-md cursor-default">
             <span className="w-2 h-2 rounded-full bg-yby-primary animate-ping" />
             Plataforma ESG de Coleta Seletiva
@@ -127,8 +127,10 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Carrossel Oficial com as Imagens do Hero do somosyby.com.br */}
-        <HeroBannerCarousel />
+        {/* Faixa Panorâmica 100% Largura (Edge-to-Edge de uma ponta a outra) */}
+        <div className="w-full mt-12 md:mt-16">
+          <HeroBannerCarousel />
+        </div>
       </section>
 
       {/* Seção Impacto Mensurável */}
