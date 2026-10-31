@@ -16,6 +16,7 @@ import {
   Share2,
 } from 'lucide-react';
 import { Button } from '@/shared/ui/Button.jsx';
+import { CinematicHero } from './components/CinematicHero.jsx';
 import { HeroBannerCarousel } from './components/HeroBannerCarousel.jsx';
 import { LandingFooter } from './components/LandingFooter.jsx';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton.jsx';
@@ -26,34 +27,49 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white text-yby-heading flex flex-col selection:bg-yby-light selection:text-yby-primary">
-      {/* Top Navbar */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-yby-border/60">
+      {/* Top Navbar no Estilo Dark Atmosférico */}
+      <header className="sticky top-0 z-30 bg-[#0A160E]/85 backdrop-blur-md border-b border-white/10 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-10 h-10 rounded-xl bg-yby-tint/60 border border-yby-border/60 flex items-center justify-center p-1.5 shadow-sm">
-              <YbyIcon variant="dark" className="w-6 h-6" />
+          <div
+            className="flex items-center gap-3 cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center p-1.5 shadow-sm">
+              <YbyIcon variant="white" className="w-6 h-6" />
             </div>
-            <span className="font-extrabold text-2xl tracking-tight text-yby-heading">
+            <span className="font-extrabold text-2xl tracking-tight text-white">
               YBY
             </span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-yby-muted">
-            <a href="#como-funciona" className="hover:text-yby-primary transition-colors">Como funciona</a>
-            <a href="#impacto" className="hover:text-yby-primary transition-colors">Impacto</a>
-            <a href="#funcionalidades" className="hover:text-yby-primary transition-colors">Funcionalidades</a>
-            <a href="#para-quem" className="hover:text-yby-primary transition-colors">Para quem</a>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-white/80">
+            <a href="#como-funciona" className="hover:text-lime-400 transition-colors">
+              Como funciona
+            </a>
+            <a href="#impacto" className="hover:text-lime-400 transition-colors">
+              Impacto
+            </a>
+            <a href="#funcionalidades" className="hover:text-lime-400 transition-colors">
+              Funcionalidades
+            </a>
+            <a href="#para-quem" className="hover:text-lime-400 transition-colors">
+              Para quem
+            </a>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="primary" size="md" onClick={() => navigate('/signIn')}>
+            <button
+              type="button"
+              onClick={() => navigate('/signIn')}
+              className="px-6 py-2.5 rounded-full bg-lime-400 hover:bg-lime-300 text-black font-extrabold text-sm shadow-md hover:scale-105 active:scale-95 transition-all"
+            >
               Entrar
-            </Button>
+            </button>
           </div>
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-yby-heading hover:bg-yby-surface"
+            className="md:hidden p-2 rounded-lg text-white hover:bg-white/10"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -62,76 +78,48 @@ export function LandingPage() {
 
         {/* Menu Mobile */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-yby-border bg-white px-4 pt-2 pb-6 space-y-3">
+          <div className="md:hidden border-b border-white/10 bg-[#0A160E] px-4 pt-2 pb-6 space-y-3">
             <a
               href="#como-funciona"
-              className="block py-2 text-sm font-semibold text-yby-muted hover:text-yby-primary"
+              className="block py-2 text-sm font-semibold text-white/80 hover:text-lime-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               Como funciona
             </a>
             <a
               href="#impacto"
-              className="block py-2 text-sm font-semibold text-yby-muted hover:text-yby-primary"
+              className="block py-2 text-sm font-semibold text-white/80 hover:text-lime-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               Impacto
             </a>
             <a
               href="#funcionalidades"
-              className="block py-2 text-sm font-semibold text-yby-muted hover:text-yby-primary"
+              className="block py-2 text-sm font-semibold text-white/80 hover:text-lime-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               Funcionalidades
             </a>
             <a
               href="#para-quem"
-              className="block py-2 text-sm font-semibold text-yby-muted hover:text-yby-primary"
+              className="block py-2 text-sm font-semibold text-white/80 hover:text-lime-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               Para quem
             </a>
-            <Button variant="primary" fullWidth onClick={() => navigate('/signIn')}>
+            <button
+              type="button"
+              className="w-full py-3 rounded-full bg-lime-400 text-black font-extrabold text-sm"
+              onClick={() => navigate('/signIn')}
+            >
               Entrar na Plataforma
-            </Button>
+            </button>
           </div>
         )}
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-16 md:pt-24 pb-0 text-center bg-gradient-to-b from-yby-cream/60 via-yby-cream/20 to-white relative overflow-hidden">
-        {/* Elemento de iluminação ambiente no fundo */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-yby-tint/40 to-yby-light/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-yby-light text-yby-primary text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-300 hover:scale-105 hover:border-yby-primary/40 hover:shadow-md cursor-default">
-            <span className="w-2 h-2 rounded-full bg-yby-primary animate-ping" />
-            Plataforma ESG de Coleta Seletiva
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-yby-heading tracking-tight leading-[1.15]">
-            Gestão de resíduos com dados de impacto
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-yby-muted max-w-2xl mx-auto leading-relaxed">
-            Conectamos geradores de resíduos a cooperativas de reciclagem, transformando cada coleta em indicadores ambientais certificados.
-          </p>
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="primary" size="lg" onClick={() => navigate('/signIn')} className="w-full sm:w-auto shadow-md">
-              Acessar plataforma <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="secondary" size="lg" onClick={() => {
-              const el = document.getElementById('como-funciona');
-              el?.scrollIntoView({ behavior: 'smooth' });
-            }} className="w-full sm:w-auto">
-              Conhecer operação
-            </Button>
-          </div>
-        </div>
-
-        {/* Faixa Panorâmica 100% Largura (Edge-to-Edge de uma ponta a outra) */}
-        <div className="w-full mt-12 md:mt-16">
-          <HeroBannerCarousel />
-        </div>
-      </section>
+      {/* Hero Cinematográfico com Imagens de Fundo e Atmosfera Dark (Inspirado na Referência) */}
+      <CinematicHero />
 
       {/* Seção Impacto Mensurável */}
       <section id="impacto" className="py-16 bg-yby-cream/40 border-y border-yby-border/60">

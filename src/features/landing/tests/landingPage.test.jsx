@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { HeroBannerCarousel } from '../components/HeroBannerCarousel.jsx';
+import { CinematicHero } from '../components/CinematicHero.jsx';
 import { LandingFooter } from '../components/LandingFooter.jsx';
 import { FloatingWhatsAppButton } from '../components/FloatingWhatsAppButton.jsx';
 
@@ -77,6 +78,35 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
       expect(floatingLink).toBeInTheDocument();
       expect(floatingLink.getAttribute('href')).toContain('https://wa.me/5585987273633');
       expect(floatingLink).toHaveAttribute('target', '_blank');
+    });
+  });
+
+  describe('CinematicHero', () => {
+    it('deve renderizar o título cinematográfico, chips com estilo glassmorphism e métricas de impacto', () => {
+      render(
+        <BrowserRouter>
+          <CinematicHero />
+        </BrowserRouter>
+      );
+
+      // Título
+      expect(
+        screen.getByText(/Dados reais\. Impacto mensurável\. Economia circular\./i)
+      ).toBeInTheDocument();
+
+      // Chips flutuantes
+      expect(screen.getByText('Logística Reversa Certificada')).toBeInTheDocument();
+      expect(screen.getByText('Rastreabilidade PNRS')).toBeInTheDocument();
+      expect(screen.getByText('Impacto Social em Cooperativas')).toBeInTheDocument();
+
+      // Métricas de impacto
+      expect(screen.getByText('+2.500')).toBeInTheDocument();
+      expect(screen.getByText('12+')).toBeInTheDocument();
+      expect(screen.getByText('14,2 ton')).toBeInTheDocument();
+      expect(screen.getByText('100%')).toBeInTheDocument();
+
+      // Botão de ação
+      expect(screen.getByRole('button', { name: /Acessar plataforma/i })).toBeInTheDocument();
     });
   });
 });
