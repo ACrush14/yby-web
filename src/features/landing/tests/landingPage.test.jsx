@@ -3,6 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { HeroBannerCarousel } from '../components/HeroBannerCarousel.jsx';
+import { HeroInteractiveShowcase } from '../components/HeroInteractiveShowcase.jsx';
+import { HeroPartnerLogos } from '../components/HeroPartnerLogos.jsx';
 import { LandingFooter } from '../components/LandingFooter.jsx';
 import { FloatingWhatsAppButton } from '../components/FloatingWhatsAppButton.jsx';
 
@@ -77,6 +79,44 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
       expect(floatingLink).toBeInTheDocument();
       expect(floatingLink.getAttribute('href')).toContain('https://wa.me/5585987273633');
       expect(floatingLink).toHaveAttribute('target', '_blank');
+    });
+  });
+
+  describe('HeroInteractiveShowcase', () => {
+    it('deve alternar entre Dashboard, Tabela e Inscrição através das abas interativas', () => {
+      render(<HeroInteractiveShowcase />);
+
+      // Inicia em Dashboard
+      expect(screen.getByText('Indicadores Ambientais ESG')).toBeInTheDocument();
+      expect(screen.getByText('1.480 kWh')).toBeInTheDocument();
+
+      // Clica na aba 2. Tabela de Coletas
+      const tabelaTab = screen.getByRole('button', { name: /2\. Tabela de Coletas/i });
+      fireEvent.click(tabelaTab);
+
+      expect(screen.getByText('Planejamento e Registro de Coletas')).toBeInTheDocument();
+      expect(screen.getByText('Coocencipe')).toBeInTheDocument();
+      expect(screen.getByText('Rosa Virgínia')).toBeInTheDocument();
+
+      // Clica na aba 3. Inscrição & Ponto
+      const inscricaoTab = screen.getByRole('button', { name: /3\. Inscrição & Ponto/i });
+      fireEvent.click(inscricaoTab);
+
+      expect(screen.getByText('Inscrição e Cadastro de Ponto')).toBeInTheDocument();
+      expect(screen.getByText('Condomínio Reserva das Palmeiras')).toBeInTheDocument();
+    });
+  });
+
+  describe('HeroPartnerLogos', () => {
+    it('deve renderizar a faixa de parceiros e cooperativas conectadas', () => {
+      render(<HeroPartnerLogos />);
+
+      expect(
+        screen.getByText(/Cooperativas e organizações conectadas na plataforma YBY/i)
+      ).toBeInTheDocument();
+      expect(screen.getByText('Coocencipe')).toBeInTheDocument();
+      expect(screen.getByText('Rosa Virgínia')).toBeInTheDocument();
+      expect(screen.getByText('Rede Ceará')).toBeInTheDocument();
     });
   });
 });

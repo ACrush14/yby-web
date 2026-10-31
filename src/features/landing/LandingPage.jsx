@@ -14,9 +14,12 @@ import {
   FileSpreadsheet,
   BarChart3,
   Share2,
+  ShieldCheck,
 } from 'lucide-react';
 import { Button } from '@/shared/ui/Button.jsx';
 import { HeroBannerCarousel } from './components/HeroBannerCarousel.jsx';
+import { HeroInteractiveShowcase } from './components/HeroInteractiveShowcase.jsx';
+import { HeroPartnerLogos } from './components/HeroPartnerLogos.jsx';
 import { LandingFooter } from './components/LandingFooter.jsx';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton.jsx';
 
@@ -98,37 +101,92 @@ export function LandingPage() {
         )}
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-16 md:pt-24 pb-0 text-center bg-gradient-to-b from-yby-cream/60 via-yby-cream/20 to-white relative overflow-hidden">
-        {/* Elemento de iluminação ambiente no fundo */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-yby-tint/40 to-yby-light/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow" />
+      {/* Hero Section Split Layout (Inspirado nas Melhores Práticas SaaS) */}
+      <section className="pt-12 sm:pt-16 md:pt-20 pb-0 bg-gradient-to-b from-yby-cream/60 via-yby-cream/20 to-white relative overflow-hidden">
+        {/* Iluminação ambiente suave */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-yby-tint/40 to-yby-light/30 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow" />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-yby-light text-yby-primary text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-300 hover:scale-105 hover:border-yby-primary/40 hover:shadow-md cursor-default">
-            <span className="w-2 h-2 rounded-full bg-yby-primary animate-ping" />
-            Plataforma ESG de Coleta Seletiva
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-yby-heading tracking-tight leading-[1.15]">
-            Gestão de resíduos com dados de impacto
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-yby-muted max-w-2xl mx-auto leading-relaxed">
-            Conectamos geradores de resíduos a cooperativas de reciclagem, transformando cada coleta em indicadores ambientais certificados.
-          </p>
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="primary" size="lg" onClick={() => navigate('/signIn')} className="w-full sm:w-auto shadow-md">
-              Acessar plataforma <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="secondary" size="lg" onClick={() => {
-              const el = document.getElementById('como-funciona');
-              el?.scrollIntoView({ behavior: 'smooth' });
-            }} className="w-full sm:w-auto">
-              Conhecer operação
-            </Button>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            {/* Coluna Esquerda: Proposta de Valor e Ações */}
+            <div className="lg:col-span-6 text-left space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-yby-light text-yby-primary text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-300 hover:scale-105 hover:border-yby-primary/40 cursor-default">
+                <span className="w-2 h-2 rounded-full bg-yby-primary animate-ping" />
+                Plataforma ESG • 2.500+ Coletas Rastreáveis
+              </div>
+
+              <h1 className="text-3.5xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold text-yby-heading tracking-tight leading-[1.12]">
+                Gestão inteligente de resíduos com dados e comprovação ESG
+              </h1>
+
+              <p className="text-sm sm:text-base md:text-lg text-yby-muted leading-relaxed max-w-xl">
+                Conectamos geradores de resíduos a cooperativas de reciclagem em uma única
+                experiência integrada. Monitore coletas em tempo real, emita relatórios automáticos
+                e comprove seu impacto socioambiental.
+              </p>
+
+              {/* Botões de Ação */}
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => navigate('/signIn')}
+                  className="shadow-md hover:shadow-lg hover:scale-105 transition-all text-sm font-bold min-h-[48px]"
+                >
+                  Acessar plataforma <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  onClick={() => {
+                    const el = document.getElementById('como-funciona');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="min-h-[48px] text-sm font-semibold"
+                >
+                  Conhecer operação
+                </Button>
+              </div>
+
+              {/* Selos de Confiança / Prova Social Abaixo dos Botões */}
+              <div className="pt-4 border-t border-yby-border/60 flex flex-wrap items-center gap-4 text-xs text-yby-muted font-medium">
+                <div className="flex items-center gap-1.5 text-yby-heading font-bold">
+                  <CheckCircle2 className="w-4 h-4 text-yby-primary" />
+                  <span>100% em conformidade com a PNRS</span>
+                </div>
+                <span className="hidden sm:inline">•</span>
+                <div className="flex items-center gap-1.5 text-yby-heading font-bold">
+                  <ShieldCheck className="w-4 h-4 text-yby-primary" />
+                  <span>Relatórios com rastreabilidade auditável</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Coluna Direita: Vitrine Animada e Interativa (Dashboard -> Tabela -> Inscrição) */}
+            <div className="lg:col-span-6">
+              <HeroInteractiveShowcase />
+            </div>
           </div>
         </div>
 
-        {/* Faixa Panorâmica 100% Largura (Edge-to-Edge de uma ponta a outra) */}
-        <div className="w-full mt-12 md:mt-16">
+        {/* Faixa de Cooperativas e Parceiros Conectados */}
+        <HeroPartnerLogos />
+      </section>
+
+      {/* Seção Operação em Campo com Imagens Reais do YBY */}
+      <section className="py-12 bg-white border-b border-yby-border/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-6">
+          <span className="text-xs font-bold uppercase tracking-wider text-yby-primary bg-yby-tint px-3 py-1 rounded-full border border-yby-light">
+            Operação em Campo
+          </span>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-yby-heading mt-2">
+            Logística Reversa e Economia Circular na Prática
+          </h2>
+          <p className="text-xs md:text-sm text-yby-muted mt-1 max-w-2xl mx-auto">
+            Acompanhe a triagem e o desenvolvimento das cooperativas de catadores parceiras.
+          </p>
+        </div>
+        <div className="w-full">
           <HeroBannerCarousel />
         </div>
       </section>
