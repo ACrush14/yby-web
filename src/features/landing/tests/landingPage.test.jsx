@@ -82,7 +82,7 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
   });
 
   describe('CinematicHero', () => {
-    it('deve renderizar o título cinematográfico, chips com estilo glassmorphism e métricas de impacto', () => {
+    it('deve renderizar o título cinematográfico, chips com estilo glassmorphism e setas discretas', () => {
       render(
         <BrowserRouter>
           <CinematicHero />
@@ -99,11 +99,9 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
       expect(screen.getByText('Rastreabilidade PNRS')).toBeInTheDocument();
       expect(screen.getByText('Impacto Social em Cooperativas')).toBeInTheDocument();
 
-      // Métricas de impacto
-      expect(screen.getByText('+2.500')).toBeInTheDocument();
-      expect(screen.getByText('12+')).toBeInTheDocument();
-      expect(screen.getByText('14,2 ton')).toBeInTheDocument();
-      expect(screen.getByText('100%')).toBeInTheDocument();
+      // Setas discretas de navegação
+      expect(screen.getByRole('button', { name: /Foto anterior/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Próxima foto/i })).toBeInTheDocument();
 
       // Botão de ação
       expect(screen.getByRole('button', { name: /Acessar plataforma/i })).toBeInTheDocument();
