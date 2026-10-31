@@ -129,35 +129,19 @@ export function CinematicHero() {
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* 3. Conteúdo Central Sobreposto com Tags Flutuantes */}
+      {/* 3. Conteúdo Central Sobreposto com Tipografia de Alto Impacto */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 md:px-14 py-20 sm:py-28 flex flex-col items-center justify-center text-center">
-        {/* Chips Flutuantes Estilo Glassmorphism */}
-        <div className="w-full flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold text-white/90 shadow-lg transition-transform hover:scale-105 cursor-default">
-            <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
-            <span>Logística Reversa Certificada</span>
-          </div>
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold text-white/90 shadow-lg transition-transform hover:scale-105 cursor-default">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span>Rastreabilidade PNRS</span>
-          </div>
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold text-white/90 shadow-lg transition-transform hover:scale-105 cursor-default">
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
-            <span>Impacto Social em Cooperativas</span>
-          </div>
-        </div>
-
-        {/* Título Principal de Alto Impacto */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.12] max-w-4xl drop-shadow-md">
-          Dados reais. Impacto mensurável. Economia circular.
+        {/* Título Principal de Alto Impacto - Frases de Efeito em Linhas Separadas */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15] max-w-4xl drop-shadow-md">
+          <span className="block">Dados reais.</span>
+          <span className="block">Impacto mensurável.</span>
+          <span className="block text-white">Economia circular.</span>
         </h1>
 
         {/* Subtítulo Descritivo */}
         <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-normal">
           Conectamos empresas e condomínios a cooperativas de reciclagem, transformando cada coleta
-          em indicadores ambientais certificados e renda digna.
+          em indicadores ambientais certificados.
         </p>
 
         {/* Botões de Ação em Pílula */}

@@ -82,22 +82,22 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
   });
 
   describe('CinematicHero', () => {
-    it('deve renderizar o título cinematográfico, chips com estilo glassmorphism e setas discretas', () => {
+    it('deve renderizar o título cinematográfico com frases de efeito em linhas separadas e setas discretas', () => {
       render(
         <BrowserRouter>
           <CinematicHero />
         </BrowserRouter>
       );
 
-      // Título
-      expect(
-        screen.getByText(/Dados reais\. Impacto mensurável\. Economia circular\./i)
-      ).toBeInTheDocument();
+      // Frases de efeito em linhas independentes
+      expect(screen.getByText('Dados reais.')).toBeInTheDocument();
+      expect(screen.getByText('Impacto mensurável.')).toBeInTheDocument();
+      expect(screen.getByText('Economia circular.')).toBeInTheDocument();
 
-      // Chips flutuantes
-      expect(screen.getByText('Logística Reversa Certificada')).toBeInTheDocument();
-      expect(screen.getByText('Rastreabilidade PNRS')).toBeInTheDocument();
-      expect(screen.getByText('Impacto Social em Cooperativas')).toBeInTheDocument();
+      // Subtítulo focado em indicadores ambientais certificados
+      expect(
+        screen.getByText(/transformando cada coleta em indicadores ambientais certificados\./i)
+      ).toBeInTheDocument();
 
       // Setas discretas de navegação
       expect(screen.getByRole('button', { name: /Foto anterior/i })).toBeInTheDocument();
