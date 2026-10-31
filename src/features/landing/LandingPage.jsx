@@ -122,7 +122,7 @@ export function LandingPage() {
       <CinematicHero />
 
       {/* Seção Impacto Mensurável */}
-      <section id="impacto" className="py-16 bg-yby-cream/40 border-b border-yby-border/60">
+      <section id="impacto" className="pt-20 sm:pt-24 pb-16 bg-yby-cream/40 border-b border-yby-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-2xl md:text-3xl font-extrabold text-yby-heading tracking-tight">

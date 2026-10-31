@@ -81,12 +81,14 @@ export function CinematicHero() {
       role="region"
       aria-label="Apresentação Principal da Plataforma YBY"
     >
-      {/* 1. Camada de Imagens Fotográficas com Transição Suave e Fade Out Gradual */}
+      {/* 1. Camada de Imagens Fotográficas com Transição Suave e Fade Out Amplo */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%)',
+          maskImage:
+            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 68%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 68%)',
         }}
       >
         {HERO_PHOTOS.map((photo, index) => {
@@ -116,8 +118,14 @@ export function CinematicHero() {
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-lime-400/10 rounded-full blur-[100px] pointer-events-none" />
       </div>
 
-      {/* Gradiente de Transição Suave (Fade Out) entre o Hero e a Seção Inferior */}
-      <div className="absolute bottom-0 inset-x-0 h-32 sm:h-44 bg-gradient-to-b from-transparent via-[#0A160E]/70 to-[#FBFAF7] pointer-events-none z-10" />
+      {/* Gradiente de Transição Amplo (Fade In / Fade Out Maior) entre o Hero e a Seção Inferior */}
+      <div
+        className="absolute bottom-0 inset-x-0 h-80 sm:h-[420px] md:h-[520px] pointer-events-none z-10"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(10, 22, 14, 0) 0%, rgba(10, 22, 14, 0.35) 25%, rgba(10, 22, 14, 0.75) 50%, rgba(251, 250, 247, 0.45) 80%, rgba(251, 250, 247, 1) 100%)',
+        }}
+      />
 
       {/* 2. Setas Discretas de Navegação (Esquerda e Direita) */}
       <button
@@ -175,7 +183,7 @@ export function CinematicHero() {
       </div>
 
       {/* 4. Indicador Discreto de Navegação (Dots Minimalistas com Pílula Suave) */}
-      <div className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-sm">
+      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/15 shadow-md">
         {HERO_PHOTOS.map((photo, index) => {
           const isActive = index === currentIndex;
           return (
