@@ -36,9 +36,10 @@ export const InputField = React.forwardRef(function InputField(
           ref={ref}
           className={clsx(
             'w-full bg-white text-yby-heading text-sm rounded-lg border border-yby-border px-3.5 py-2.5 min-h-[44px]',
-            'placeholder:text-yby-muted/60 transition-colors',
-            'focus:outline-none focus:border-yby-primary focus:ring-2 focus:ring-yby-tint focus:bg-yby-tint/20',
-            error && 'border-yby-danger focus:border-yby-danger focus:ring-red-100',
+            'placeholder:text-yby-muted/60',
+            'hover:border-yby-primary hover:transition-none transition-none',
+            'focus:outline-none focus:border-yby-primary focus:ring-2 focus:ring-yby-tint focus:bg-yby-tint/20 focus:transition-none',
+            error && 'border-yby-danger hover:border-yby-danger focus:border-yby-danger focus:ring-red-100',
             rightElement && 'pr-10',
             inputClassName
           )}

@@ -38,10 +38,16 @@ export function SecondaryKpiGrid({ metrics }) {
             className="absolute top-0 left-0 right-0 h-1.5 group-hover:h-2 transition-all duration-300"
             style={{ backgroundColor: card.accentColor }}
           />
-          <span className="text-[10px] font-bold tracking-wider text-yby-muted uppercase block group-hover:text-yby-heading transition-colors">
+          <span
+            className="text-[10px] font-bold tracking-wider text-yby-muted uppercase block truncate group-hover:text-yby-heading transition-colors"
+            title={card.title}
+          >
             {card.title}
           </span>
-          <p className="text-lg md:text-xl font-extrabold text-yby-heading mt-1.5 tracking-tight group-hover:translate-x-0.5 transition-transform">
+          <p
+            className="text-base sm:text-lg xl:text-xl font-extrabold text-yby-heading mt-1.5 tracking-tight truncate group-hover:translate-x-0.5 transition-transform"
+            title={card.value}
+          >
             {card.value}
           </p>
         </div>

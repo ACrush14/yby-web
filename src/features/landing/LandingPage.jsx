@@ -133,63 +133,67 @@ export function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
             {/* Card 1 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-orange/40 cursor-default">
-              <div className="w-14 h-14 rounded-2xl bg-[#FDF0EC] text-yby-orange flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
-                <Zap className="w-7 h-7" />
+            <div className="group bg-white p-4 sm:p-5 xl:p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-3.5 xl:gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-orange/40 cursor-default">
+              <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-[#FDF0EC] text-yby-orange flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
+                <Zap className="w-6 h-6 xl:w-7 xl:h-7" />
               </div>
-              <div>
-                <span className="text-xs font-semibold text-yby-muted uppercase tracking-wider group-hover:text-yby-orange transition-colors">
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] xl:text-xs font-semibold text-yby-muted uppercase tracking-wider block truncate group-hover:text-yby-orange transition-colors">
                   Energia evitada
                 </span>
-                <p className="text-xl md:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  276.984 MWh
+                <p className="text-base sm:text-lg lg:text-base xl:text-xl 2xl:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform flex items-baseline gap-1 flex-wrap">
+                  <span>276.984</span>
+                  <span className="text-xs sm:text-sm font-bold text-yby-muted">MWh</span>
                 </p>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-blue/40 cursor-default">
-              <div className="w-14 h-14 rounded-2xl bg-[#E5F1F8] text-yby-blue flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
-                <Droplet className="w-7 h-7" />
+            <div className="group bg-white p-4 sm:p-5 xl:p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-3.5 xl:gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-blue/40 cursor-default">
+              <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-[#E5F1F8] text-yby-blue flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
+                <Droplet className="w-6 h-6 xl:w-7 xl:h-7" />
               </div>
-              <div>
-                <span className="text-xs font-semibold text-yby-muted uppercase tracking-wider group-hover:text-yby-blue transition-colors">
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] xl:text-xs font-semibold text-yby-muted uppercase tracking-wider block truncate group-hover:text-yby-blue transition-colors">
                   Água economizada
                 </span>
-                <p className="text-xl md:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  24.036.493 L
+                <p className="text-base sm:text-lg lg:text-base xl:text-xl 2xl:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform flex items-baseline gap-1 flex-wrap">
+                  <span>24.036.493</span>
+                  <span className="text-xs sm:text-sm font-bold text-yby-muted">L</span>
                 </p>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-teal/40 cursor-default">
-              <div className="w-14 h-14 rounded-2xl bg-[#E9F1ED] text-yby-teal flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
-                <Cloud className="w-7 h-7" />
+            <div className="group bg-white p-4 sm:p-5 xl:p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-3.5 xl:gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-teal/40 cursor-default">
+              <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-[#E9F1ED] text-yby-teal flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
+                <Cloud className="w-6 h-6 xl:w-7 xl:h-7" />
               </div>
-              <div>
-                <span className="text-xs font-semibold text-yby-muted uppercase tracking-wider group-hover:text-yby-teal transition-colors">
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] xl:text-xs font-semibold text-yby-muted uppercase tracking-wider block truncate group-hover:text-yby-teal transition-colors">
                   CO₂e evitado
                 </span>
-                <p className="text-xl md:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  133.585 kg
+                <p className="text-base sm:text-lg lg:text-base xl:text-xl 2xl:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform flex items-baseline gap-1 flex-wrap">
+                  <span>133.585</span>
+                  <span className="text-xs sm:text-sm font-bold text-yby-muted">kg</span>
                 </p>
               </div>
             </div>
 
             {/* Card 4 */}
-            <div className="group bg-white p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-primary/40 cursor-default">
-              <div className="w-14 h-14 rounded-2xl bg-yby-tint text-yby-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
-                <TreePine className="w-7 h-7" />
+            <div className="group bg-white p-4 sm:p-5 xl:p-6 rounded-2xl border border-yby-border shadow-card flex items-center gap-3.5 xl:gap-4 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-elevated hover:border-yby-primary/40 cursor-default">
+              <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-yby-tint text-yby-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 shadow-sm">
+                <TreePine className="w-6 h-6 xl:w-7 xl:h-7" />
               </div>
-              <div>
-                <span className="text-xs font-semibold text-yby-muted uppercase tracking-wider group-hover:text-yby-primary transition-colors">
+              <div className="min-w-0 flex-1">
+                <span className="text-[11px] xl:text-xs font-semibold text-yby-muted uppercase tracking-wider block truncate group-hover:text-yby-primary transition-colors">
                   Árvores poupadas
                 </span>
-                <p className="text-xl md:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  644 árvores
+                <p className="text-base sm:text-lg lg:text-base xl:text-xl 2xl:text-2xl font-extrabold text-yby-heading mt-0.5 tracking-tight group-hover:translate-x-0.5 transition-transform flex items-baseline gap-1 flex-wrap">
+                  <span>644</span>
+                  <span className="text-xs sm:text-sm font-bold text-yby-muted">árvores</span>
                 </p>
               </div>
             </div>
@@ -404,12 +408,18 @@ export function LandingPage() {
       </section>
 
       {/* Seção CTA de Alta Conversão - Preenchido até o Rodapé */}
-      <section className="w-full bg-gradient-to-br from-yby-dark via-yby-primary to-[#1B5324] text-white pt-16 md:pt-20 pb-16 md:pb-20 relative overflow-hidden">
+      <section className="w-full bg-gradient-to-br from-yby-dark via-yby-primary to-[#1B5324] text-white pt-16 md:pt-24 pb-14 md:pb-16 relative overflow-hidden">
+        {/* Fade In Sutil no Topo (Transição Suave da Seção Clara para o Verde do CTA) */}
+        <div className="absolute top-0 inset-x-0 h-24 sm:h-36 bg-gradient-to-b from-white via-white/20 to-transparent pointer-events-none z-10" />
+
         {/* Efeito de brilho orgânico no fundo */}
         <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 -mb-12 -ml-12 w-80 h-80 bg-yby-light/20 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute bottom-10 left-0 -mb-12 -ml-12 w-80 h-80 bg-yby-light/15 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Fade Out Sutil na Base (Transição Suave do Verde do CTA para o Rodapé Dark) */}
+        <div className="absolute bottom-0 inset-x-0 h-28 sm:h-40 bg-gradient-to-b from-transparent via-[#143E1B]/70 to-[#143E1B] pointer-events-none z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="max-w-3xl space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm text-xs font-bold uppercase tracking-wider text-yby-light border border-white/20 shadow-sm">
               <YbyIcon variant="white" className="w-4 h-4" />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Filter } from 'lucide-react';
 import { InputField } from '@/shared/ui/InputField.jsx';
 import { SelectField } from '@/shared/ui/SelectField.jsx';
+import { DatePickerField } from '@/shared/ui/DatePickerField.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
 
 export function RelatoriosFilterCard({ filters, cooperatives = [], wasteList = [] }) {
@@ -48,16 +49,14 @@ export function RelatoriosFilterCard({ filters, cooperatives = [], wasteList = [
 
       {/* Linha 2 */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
-        <InputField
+        <DatePickerField
           label="Data inicial"
-          type="date"
           value={filters.startDate}
           onChange={(e) => filters.setStartDate(e.target.value)}
         />
 
-        <InputField
+        <DatePickerField
           label="Data final"
-          type="date"
           value={filters.endDate}
           onChange={(e) => filters.setEndDate(e.target.value)}
         />

@@ -35,7 +35,7 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
   });
 
   describe('LandingFooter', () => {
-    it('deve exibir email oficial, telefone/contato e botão de WhatsApp', () => {
+    it('deve exibir email oficial, telefone/contato e redes sociais no rodapé enxuto', () => {
       render(
         <BrowserRouter>
           <LandingFooter />
@@ -52,13 +52,7 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
       expect(phoneLink).toBeInTheDocument();
       expect(phoneLink).toHaveAttribute('href', 'tel:+5585987273633');
 
-      // 3. Botão do WhatsApp para envio de mensagem
-      const whatsappBtn = screen.getByRole('link', { name: /Enviar mensagem no WhatsApp para YBY/i });
-      expect(whatsappBtn).toBeInTheDocument();
-      expect(whatsappBtn.getAttribute('href')).toContain('https://wa.me/5585987273633');
-      expect(whatsappBtn).toHaveAttribute('target', '_blank');
-
-      // 4. Redes sociais
+      // 3. Redes sociais
       expect(screen.getByRole('link', { name: 'Instagram' })).toHaveAttribute(
         'href',
         'https://www.instagram.com/somosyby/'
@@ -67,6 +61,16 @@ describe('Landing Page - Componentes do Hero e Rodapé', () => {
         'href',
         'https://www.linkedin.com/company/somosyby'
       );
+      expect(screen.getByRole('link', { name: 'Facebook' })).toHaveAttribute(
+        'href',
+        'https://www.facebook.com/somosYby'
+      );
+
+      // 4. Garante que os blocos removidos (Navegação, WhatsApp redundante e Logins de acesso) não estão no footer
+      expect(screen.queryByRole('heading', { name: /Navegação/i })).not.toBeInTheDocument();
+      expect(screen.queryByRole('link', { name: /Enviar mensagem no WhatsApp para YBY/i })).not.toBeInTheDocument();
+      expect(screen.queryByText(/Login Administrativo/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Acesso Cooperativa/i)).not.toBeInTheDocument();
     });
   });
 

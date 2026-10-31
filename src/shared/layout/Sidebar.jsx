@@ -113,7 +113,82 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
 
           {/* Itens do Menu */}
           <nav className="p-3 space-y-1.5 mt-2">
-            {/* 1. CADASTRO com Submenu (Cliente, Cooperativa, Gestor) */}
+            {/* 1. DASHBOARD */}
+            <NavLink
+              to="/dashboard"
+              onClick={onItemClick}
+              className={({ isActive }) =>
+                clsx(
+                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
+                  isActive
+                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
+                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
+                )
+              }
+              title={collapsed ? 'Dashboard' : undefined}
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
+                  )}
+                  <BarChart2 className="w-5 h-5 flex-shrink-0" />
+                  {!collapsed && <span className="whitespace-nowrap">Dashboard</span>}
+                </>
+              )}
+            </NavLink>
+
+            {/* 2. RELATÓRIOS */}
+            <NavLink
+              to="/relatorios"
+              onClick={onItemClick}
+              className={({ isActive }) =>
+                clsx(
+                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
+                  isActive
+                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
+                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
+                )
+              }
+              title={collapsed ? 'Relatórios' : undefined}
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
+                  )}
+                  <Folder className="w-5 h-5 flex-shrink-0" />
+                  {!collapsed && <span className="whitespace-nowrap">Relatórios</span>}
+                </>
+              )}
+            </NavLink>
+
+            {/* 3. PLANEJAMENTO */}
+            <NavLink
+              to="/planejamento"
+              onClick={onItemClick}
+              className={({ isActive }) =>
+                clsx(
+                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
+                  isActive
+                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
+                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
+                )
+              }
+              title={collapsed ? 'Planejamento' : undefined}
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
+                  )}
+                  <Calendar className="w-5 h-5 flex-shrink-0" />
+                  {!collapsed && <span className="whitespace-nowrap">Planejamento</span>}
+                </>
+              )}
+            </NavLink>
+
+            {/* 4. CADASTRO com Submenu (Cliente, Cooperativa, Usuário) */}
             <div>
               <div
                 onClick={() => {
@@ -148,10 +223,11 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                   {[
                     { id: 'cliente', label: 'Cliente' },
                     { id: 'cooperativa', label: 'Cooperativa' },
-                    { id: 'gestor', label: 'Gestor' },
+                    { id: 'usuario', label: 'Usuário' },
                   ].map((sub) => {
                     const isSubActive =
-                      location.pathname.startsWith('/cadastro') && currentTab === sub.id;
+                      location.pathname.startsWith('/cadastro') &&
+                      (currentTab === sub.id || (sub.id === 'usuario' && currentTab === 'gestor'));
                     return (
                       <NavLink
                         key={sub.id}
@@ -171,81 +247,6 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                 </div>
               )}
             </div>
-
-            {/* 2. PLANEJAMENTO */}
-            <NavLink
-              to="/planejamento"
-              onClick={onItemClick}
-              className={({ isActive }) =>
-                clsx(
-                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
-                  isActive
-                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
-                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
-                )
-              }
-              title={collapsed ? 'Planejamento' : undefined}
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && (
-                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
-                  )}
-                  <Calendar className="w-5 h-5 flex-shrink-0" />
-                  {!collapsed && <span className="whitespace-nowrap">Planejamento</span>}
-                </>
-              )}
-            </NavLink>
-
-            {/* 3. RELATÓRIOS */}
-            <NavLink
-              to="/relatorios"
-              onClick={onItemClick}
-              className={({ isActive }) =>
-                clsx(
-                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
-                  isActive
-                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
-                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
-                )
-              }
-              title={collapsed ? 'Relatórios' : undefined}
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && (
-                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
-                  )}
-                  <Folder className="w-5 h-5 flex-shrink-0" />
-                  {!collapsed && <span className="whitespace-nowrap">Relatórios</span>}
-                </>
-              )}
-            </NavLink>
-
-            {/* 4. DASHBOARD */}
-            <NavLink
-              to="/dashboard"
-              onClick={onItemClick}
-              className={({ isActive }) =>
-                clsx(
-                  'flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all relative',
-                  isActive
-                    ? 'bg-yby-light text-yby-primary shadow-sm font-bold'
-                    : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
-                )
-              }
-              title={collapsed ? 'Dashboard' : undefined}
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && (
-                    <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-yby-primary rounded-r-md" />
-                  )}
-                  <BarChart2 className="w-5 h-5 flex-shrink-0" />
-                  {!collapsed && <span className="whitespace-nowrap">Dashboard</span>}
-                </>
-              )}
-            </NavLink>
 
             {/* SEÇÃO: PAINEL ADMINISTRATIVO */}
             <div className="pt-2 pb-1">
@@ -307,7 +308,7 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
               )}
             </NavLink>
 
-            {/* 5. EDIÇÃO com Submenu (Cliente, Cooperativa, Gestor) */}
+            {/* 5. EDIÇÃO DE USUÁRIO com Submenu (Cliente, Cooperativa, Gestor) */}
             <div>
               <div
                 onClick={() => {
@@ -320,11 +321,11 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                     ? 'bg-yby-light/70 text-yby-primary font-bold'
                     : 'text-yby-heading hover:bg-white/60 hover:text-yby-primary'
                 )}
-                title={collapsed ? 'Edição' : undefined}
+                title={collapsed ? 'Edição usuário' : undefined}
               >
                 <div className="flex items-center gap-3.5">
                   <Edit3 className="w-5 h-5 flex-shrink-0" />
-                  {!collapsed && <span>Edição</span>}
+                  {!collapsed && <span className="whitespace-nowrap">Edição usuário</span>}
                 </div>
                 {!collapsed && (
                   <ChevronDown
@@ -342,10 +343,11 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                   {[
                     { id: 'cliente', label: 'Cliente' },
                     { id: 'cooperativa', label: 'Cooperativa' },
-                    { id: 'gestor', label: 'Gestor' },
+                    { id: 'usuario', label: 'Usuário' },
                   ].map((sub) => {
                     const isSubActive =
-                      location.pathname.startsWith('/edicao') && currentTab === sub.id;
+                      location.pathname.startsWith('/edicao') &&
+                      (currentTab === sub.id || (sub.id === 'usuario' && currentTab === 'gestor'));
                     return (
                       <NavLink
                         key={sub.id}

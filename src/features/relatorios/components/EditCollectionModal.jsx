@@ -57,7 +57,7 @@ export function EditCollectionModal({ item, onClose, onSave }) {
               value={justification}
               onChange={(e) => setJustification(e.target.value)}
               placeholder="Descreva o motivo da alteração do peso ou dados da coleta..."
-              className="w-full text-sm p-3 rounded-lg border border-yby-border focus:outline-none focus:border-yby-primary focus:ring-2 focus:ring-yby-tint"
+              className="w-full text-sm p-3 rounded-lg border border-yby-border hover:border-yby-primary hover:transition-none transition-none focus:outline-none focus:border-yby-primary focus:ring-2 focus:ring-yby-tint focus:transition-none"
             />
           </div>
 

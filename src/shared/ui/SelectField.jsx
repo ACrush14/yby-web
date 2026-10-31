@@ -36,9 +36,10 @@ export const SelectField = React.forwardRef(function SelectField(
           id={selectId}
           ref={ref}
           className={clsx(
-            'w-full bg-white text-yby-heading text-sm rounded-lg border border-yby-border px-3.5 py-2.5 min-h-[44px] pr-10 appearance-none transition-colors cursor-pointer',
-            'focus:outline-none focus:border-yby-primary focus:ring-2 focus:ring-yby-tint focus:bg-yby-tint/20',
-            error && 'border-yby-danger focus:border-yby-danger',
+            'w-full bg-white text-yby-heading text-sm rounded-lg border border-yby-border px-3.5 py-2.5 min-h-[44px] pr-10 appearance-none cursor-pointer',
+            'hover:border-yby-primary hover:transition-none transition-none',
+            'focus:outline-none focus:border-yby-primary focus:ring-2 focus:ring-yby-tint focus:bg-yby-tint/20 focus:transition-none',
+            error && 'border-yby-danger hover:border-yby-danger focus:border-yby-danger',
             selectClassName
           )}
           {...props}

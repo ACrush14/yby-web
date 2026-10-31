@@ -7,12 +7,13 @@ import { CooperativeForm, ManagerForm } from './components/CooperativeForm.jsx';
 
 export function CadastroPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'cliente';
+  const rawTab = searchParams.get('tab') || 'cliente';
+  const activeTab = rawTab === 'gestor' ? 'usuario' : rawTab;
 
   const tabs = [
     { id: 'cliente', label: 'Cliente' },
     { id: 'cooperativa', label: 'Cooperativa' },
-    { id: 'gestor', label: 'Gestor' },
+    { id: 'usuario', label: 'Usuário' },
   ];
 
   const handleTabChange = (newTab) => {
@@ -23,7 +24,7 @@ export function CadastroPage() {
     <div className="space-y-6">
       <PageHeader
         title="Cadastro"
-        subtitle="Cadastre clientes, cooperativas e gestores da plataforma"
+        subtitle="Cadastre clientes, cooperativas e usuários da plataforma"
       />
 
       {/* Abas em Pílula */}
@@ -36,7 +37,7 @@ export function CadastroPage() {
       {/* Formulário da Aba Ativa */}
       {activeTab === 'cliente' && <ClientForm onCancel={() => {}} />}
       {activeTab === 'cooperativa' && <CooperativeForm onCancel={() => {}} />}
-      {activeTab === 'gestor' && <ManagerForm onCancel={() => {}} />}
+      {(activeTab === 'usuario' || activeTab === 'gestor') && <ManagerForm onCancel={() => {}} />}
     </div>
   );
 }

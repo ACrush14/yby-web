@@ -33,7 +33,7 @@ export function OrganizationFilterBar({ filters }) {
               value={filters.search}
               onChange={(e) => filters.setSearch(e.target.value)}
               placeholder="Nome da organização ou CNPJ"
-              className="w-full pl-9 pr-3 py-2 text-xs md:text-sm bg-white rounded-xl border border-yby-border focus:outline-none focus:border-yby-primary shadow-sm min-h-[44px]"
+              className="w-full pl-9 pr-3 py-2 text-xs md:text-sm bg-white rounded-xl border border-yby-border hover:border-yby-primary hover:transition-none transition-none focus:outline-none focus:border-yby-primary focus:transition-none shadow-sm min-h-[44px]"
             />
           </div>
         </div>

@@ -55,7 +55,7 @@ export function PlanejamentoPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Buscar cliente (Nome do cliente ou PEV)"
-            className="w-full pl-9 pr-3 py-2 text-xs md:text-sm bg-white rounded-xl border border-yby-border focus:outline-none focus:border-yby-primary shadow-sm"
+            className="w-full pl-9 pr-3 py-2 text-xs md:text-sm bg-white rounded-xl border border-yby-border hover:border-yby-primary hover:transition-none transition-none focus:outline-none focus:border-yby-primary focus:transition-none shadow-sm"
           />
         </div>
 

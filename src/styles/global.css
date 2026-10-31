@@ -149,3 +149,17 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Transição instantânea sem animação no estado de Hover para todas as caixas de texto */
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="range"]):not([type="file"]):not(.border-yby-danger):hover,
+textarea:not(.border-yby-danger):hover,
+select:not(.border-yby-danger):hover {
+  border-color: #267332 !important;
+  transition: none !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="range"]):not([type="file"]):focus,
+textarea:focus,
+select:focus {
+  transition: none !important;
+}

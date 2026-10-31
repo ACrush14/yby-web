@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { SelectField } from '@/shared/ui/SelectField.jsx';
-import { InputField } from '@/shared/ui/InputField.jsx';
+import { DatePickerField } from '@/shared/ui/DatePickerField.jsx';
 
 export function DashboardFilterBar({ filters, clients, wasteList }) {
   const pevOptions = clients.map((c) => ({ value: c.id, label: c.name }));
@@ -26,16 +26,14 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
           onChange={(e) => filters.setWaste(e.target.value)}
         />
 
-        <InputField
+        <DatePickerField
           label="Data inicial"
-          type="date"
           value={filters.startDate}
           onChange={(e) => filters.setStartDate(e.target.value)}
         />
 
-        <InputField
+        <DatePickerField
           label="Data final"
-          type="date"
           value={filters.endDate}
           onChange={(e) => filters.setEndDate(e.target.value)}
         />
