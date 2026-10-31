@@ -81,16 +81,22 @@ export function CinematicHero() {
       role="region"
       aria-label="Apresentação Principal da Plataforma YBY"
     >
-      {/* 1. Camada de Imagens Fotográficas com Transição Suave */}
-      <div className="absolute inset-0 z-0">
+      {/* 1. Camada de Imagens Fotográficas com Transição Suave e Fade Out Gradual */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%)',
+        }}
+      >
         {HERO_PHOTOS.map((photo, index) => {
           const isActive = index === currentIndex;
           return (
             <div
               key={photo.id}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-              } transform duration-1000`}
+                isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
             >
               <img
                 src={photo.src}
@@ -110,11 +116,14 @@ export function CinematicHero() {
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-lime-400/10 rounded-full blur-[100px] pointer-events-none" />
       </div>
 
+      {/* Gradiente de Transição Suave (Fade Out) entre o Hero e a Seção Inferior */}
+      <div className="absolute bottom-0 inset-x-0 h-32 sm:h-44 bg-gradient-to-b from-transparent via-[#0A160E]/70 to-[#FBFAF7] pointer-events-none z-10" />
+
       {/* 2. Setas Discretas de Navegação (Esquerda e Direita) */}
       <button
         type="button"
         onClick={prevSlide}
-        className="absolute left-3 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/25 hover:bg-black/55 text-white/50 hover:text-white backdrop-blur-sm border border-white/10 hover:border-white/30 flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm"
+        className="absolute left-3 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/25 hover:bg-black/55 text-white/50 hover:text-white backdrop-blur-sm border border-white/10 hover:border-white/30 flex items-center justify-center transition-colors duration-200 shadow-sm"
         aria-label="Foto anterior"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -123,7 +132,7 @@ export function CinematicHero() {
       <button
         type="button"
         onClick={nextSlide}
-        className="absolute right-3 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/25 hover:bg-black/55 text-white/50 hover:text-white backdrop-blur-sm border border-white/10 hover:border-white/30 flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm"
+        className="absolute right-3 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/25 hover:bg-black/55 text-white/50 hover:text-white backdrop-blur-sm border border-white/10 hover:border-white/30 flex items-center justify-center transition-colors duration-200 shadow-sm"
         aria-label="Próxima foto"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -165,8 +174,8 @@ export function CinematicHero() {
         </div>
       </div>
 
-      {/* 4. Indicador Discreto de Navegação (Dots Minimalistas) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      {/* 4. Indicador Discreto de Navegação (Dots Minimalistas com Pílula Suave) */}
+      <div className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-sm">
         {HERO_PHOTOS.map((photo, index) => {
           const isActive = index === currentIndex;
           return (
@@ -175,7 +184,7 @@ export function CinematicHero() {
               type="button"
               onClick={() => setCurrentIndex(index)}
               className={`transition-all duration-300 rounded-full ${
-                isActive ? 'w-6 h-1.5 bg-lime-400' : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/60'
+                isActive ? 'w-6 h-1.5 bg-lime-400' : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/80'
               }`}
               aria-label={`Ver foto ${index + 1}: ${photo.title}`}
             />

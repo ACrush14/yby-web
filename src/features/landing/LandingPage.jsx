@@ -122,7 +122,7 @@ export function LandingPage() {
       <CinematicHero />
 
       {/* Seção Impacto Mensurável */}
-      <section id="impacto" className="py-16 bg-yby-cream/40 border-y border-yby-border/60">
+      <section id="impacto" className="py-16 bg-yby-cream/40 border-b border-yby-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-2xl md:text-3xl font-extrabold text-yby-heading tracking-tight">
@@ -273,7 +273,7 @@ export function LandingPage() {
             </div>
 
             <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between cursor-default">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div>
                 <h3 className="text-xl font-bold text-yby-heading mb-3 group-hover:text-yby-primary transition-colors">
                   Cooperativas
@@ -296,7 +296,7 @@ export function LandingPage() {
             </div>
 
             <div className="group bg-white p-8 rounded-2xl border border-yby-border shadow-card relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2.5 hover:shadow-card-elevated hover:border-yby-primary/40 flex flex-col justify-between cursor-default">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-yby-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div>
                 <h3 className="text-xl font-bold text-yby-heading mb-3 group-hover:text-yby-primary transition-colors">
                   Gestores
@@ -403,41 +403,40 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Seção CTA de Alta Conversão */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="group relative rounded-3xl bg-gradient-to-br from-yby-dark via-yby-primary to-[#1B5324] text-white p-8 sm:p-12 md:p-16 overflow-hidden shadow-card-elevated transition-all duration-300 hover:shadow-2xl">
-          {/* Efeito de brilho orgânico no fundo */}
-          <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
-          <div className="absolute bottom-0 left-0 -mb-12 -ml-12 w-64 h-64 bg-yby-light/20 rounded-full blur-2xl pointer-events-none" />
+      {/* Seção CTA de Alta Conversão - Preenchido até o Rodapé */}
+      <section className="w-full bg-gradient-to-br from-yby-dark via-yby-primary to-[#1B5324] text-white pt-16 md:pt-20 pb-16 md:pb-20 relative overflow-hidden">
+        {/* Efeito de brilho orgânico no fundo */}
+        <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 -mb-12 -ml-12 w-80 h-80 bg-yby-light/20 rounded-full blur-2xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-xs font-bold uppercase tracking-wider text-yby-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm text-xs font-bold uppercase tracking-wider text-yby-light border border-white/20 shadow-sm">
               <YbyIcon variant="white" className="w-4 h-4" />
               Comece agora
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-white">
               Pronto para transformar a gestão de resíduos da sua organização?
             </h2>
-            <p className="text-sm sm:text-base text-white/80 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed max-w-2xl">
               Acesse a plataforma web, monitore coletas em tempo real e gere indicadores ambientais certificados prontos para seu relatório ESG.
             </p>
-            <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Button
                 variant="secondary"
                 size="lg"
                 onClick={() => navigate('/signIn')}
-                className="w-full sm:w-auto font-bold bg-white text-yby-dark hover:bg-yby-cream shadow-lg hover:scale-105 transition-transform"
+                className="w-full sm:w-auto font-bold bg-white text-yby-dark hover:bg-yby-cream shadow-lg hover:scale-105 active:scale-95 transition-all text-base px-7 py-3.5"
               >
                 Acessar Plataforma <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
+              <button
+                type="button"
                 onClick={() => navigate('/signIn-client')}
-                className="w-full sm:w-auto font-semibold border-white/40 text-white hover:bg-white/15"
+                className="w-full sm:w-auto inline-flex items-center justify-center font-extrabold text-base px-7 py-3.5 rounded-lg bg-lime-400 hover:bg-lime-300 text-black shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 border border-lime-300"
               >
-                Portal da Cooperativa
-              </Button>
+                Portal da Cooperativa <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
             </div>
           </div>
         </div>
