@@ -57,6 +57,7 @@ export function RelatoriosFilterCard({ filters, cooperatives = [], wasteList = [
 
         <DatePickerField
           label="Data final"
+          align="right"
           value={filters.endDate}
           onChange={(e) => filters.setEndDate(e.target.value)}
         />

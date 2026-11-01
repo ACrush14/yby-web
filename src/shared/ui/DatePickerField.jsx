@@ -80,6 +80,7 @@ export const DatePickerField = React.forwardRef(function DatePickerField(
     startYear = 2015,
     endYear = 2035,
     id,
+    align = 'auto',
     ...props
   },
   ref
@@ -87,6 +88,36 @@ export const DatePickerField = React.forwardRef(function DatePickerField(
   const containerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [displayValue, setDisplayValue] = useState(() => formatToBR(value));
+  const [detectedAlign, setDetectedAlign] = useState('left');
+
+  // Detecta se há espaço suficiente à direita do campo para evitar corte do calendário
+  useEffect(() => {
+    if (isOpen && containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const spaceOnRight = window.innerWidth - rect.left;
+      if (spaceOnRight < 320) {
+        setDetectedAlign('right');
+      } else {
+        setDetectedAlign('left');
+      }
+    }
+  }, [isOpen]);
+
+  // Atualiza alinhamento em caso de redimensionamento de janela
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleResize = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const spaceOnRight = window.innerWidth - rect.left;
+        setDetectedAlign(spaceOnRight < 320 ? 'right' : 'left');
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen]);
+
+  const computedAlign = align !== 'auto' ? align : detectedAlign;
 
   // Data atual de referência para navegação no calendário
   const today = new Date();
@@ -259,6 +290,12 @@ export const DatePickerField = React.forwardRef(function DatePickerField(
     });
   }
 
+  // Calcula se o mês precisa de 5 ou 6 semanas para não cortar dias finais
+  const lastCurrentMonthDayIdx = calendarDays.findIndex(
+    (d, i) => i >= 27 && d.day === daysInMonth && d.isCurrentMonth
+  );
+  const totalDaysToShow = lastCurrentMonthDayIdx >= 35 ? 42 : 35;
+
   const selectedParsed = parseISODate(value);
   const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
@@ -304,12 +341,15 @@ export const DatePickerField = React.forwardRef(function DatePickerField(
         </button>
       </div>
 
-      {/* Popover do Calendário */}
+      {/* Popover do Calendário - Alinhamento Inteligente para Evitar Cortes */}
       {isOpen && !disabled && (
         <div
           role="dialog"
           aria-label={`Seletor de data para ${label || 'campo'}`}
-          className="absolute top-full left-0 mt-2 z-50 w-[300px] bg-white rounded-2xl shadow-popup border border-yby-border p-3.5 animate-in fade-in zoom-in-95 duration-150"
+          className={clsx(
+            'absolute top-full mt-2 z-50 w-[300px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-popup border border-yby-border p-3.5 animate-in fade-in zoom-in-95 duration-150',
+            computedAlign === 'right' ? 'right-0' : 'left-0'
+          )}
         >
           {/* Cabeçalho: Seleção de Mês e Ano + Setas */}
           <div className="flex items-center justify-between gap-1.5 mb-3">
@@ -375,7 +415,7 @@ export const DatePickerField = React.forwardRef(function DatePickerField(
 
           {/* Grade de Dias */}
           <div className="grid grid-cols-7 gap-1 text-center">
-            {calendarDays.slice(0, 35).map((item, idx) => {
+            {calendarDays.slice(0, totalDaysToShow).map((item, idx) => {
               const isSelected =
                 selectedParsed &&
                 selectedParsed.day === item.day &&

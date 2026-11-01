@@ -78,7 +78,7 @@ export function SecondaryKpiGrid({ metrics }) {
               style={{ backgroundColor: card.accentColor }}
             />
             <span
-              className="text-[10px] sm:text-[10.5px] xl:text-[11px] font-bold tracking-tight uppercase block transition-colors leading-tight text-yby-muted truncate group-hover:text-yby-heading whitespace-nowrap"
+              className="text-[9.5px] sm:text-[10px] xl:text-[10.5px] 2xl:text-[11px] font-bold tracking-tight uppercase block transition-colors leading-tight text-yby-muted truncate group-hover:text-yby-heading whitespace-nowrap"
               title={card.title}
             >
               {card.title}

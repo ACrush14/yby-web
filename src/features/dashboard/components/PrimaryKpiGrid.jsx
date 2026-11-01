@@ -138,7 +138,7 @@ export function PrimaryKpiGrid({ metrics }) {
 
               <div className="min-w-0 flex-1">
                 <span
-                  className="text-[11px] sm:text-[11.5px] xl:text-xs font-semibold text-yby-muted group-hover:text-yby-heading block leading-tight transition-colors truncate whitespace-nowrap"
+                  className="text-[10.5px] sm:text-[11px] xl:text-[11.5px] 2xl:text-xs font-semibold text-yby-muted group-hover:text-yby-heading block leading-tight transition-colors truncate whitespace-nowrap"
                   title={card.title}
                 >
                   {card.title}

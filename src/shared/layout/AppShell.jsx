@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Toaster } from 'sonner';
 import { Sidebar } from './Sidebar.jsx';
 import { MobileHeader } from './MobileHeader.jsx';
 import { RouteSkeleton } from '@/shared/ui/skeletons/RouteSkeleton.jsx';
@@ -44,8 +43,6 @@ export function AppShell() {
 
   return (
     <div className="flex h-screen bg-white overflow-hidden">
-      <Toaster richColors position="top-right" />
-
       {/* Sidebar para telas médias e grandes (Desktop e Tablet) */}
       <div className="hidden md:block">
         <Sidebar

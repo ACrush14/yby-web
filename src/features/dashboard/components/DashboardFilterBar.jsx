@@ -34,6 +34,7 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
 
         <DatePickerField
           label="Data final"
+          align="right"
           value={filters.endDate}
           onChange={(e) => filters.setEndDate(e.target.value)}
         />

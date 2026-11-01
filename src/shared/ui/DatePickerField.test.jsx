@@ -82,4 +82,18 @@ describe('DatePickerField Component', () => {
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('deve aplicar alinhamento à direita quando align="right"', () => {
+    render(<DatePickerField label="Data final" align="right" value="2026-10-31" onChange={() => {}} />);
+    fireEvent.click(screen.getByDisplayValue('31/10/2026'));
+    const dialog = screen.getByRole('dialog');
+    expect(dialog).toHaveClass('right-0');
+  });
+
+  it('deve renderizar todos os dias incluindo o dia 31 em meses com 6 semanas como Agosto de 2026', () => {
+    render(<DatePickerField label="Data final" value="2026-08-01" onChange={() => {}} />);
+    fireEvent.click(screen.getByDisplayValue('01/08/2026'));
+    const day31Buttons = screen.getAllByRole('button', { name: '31' });
+    expect(day31Buttons.length).toBe(2);
+  });
 });
