@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Eye, EyeOff, Save } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Save } from 'lucide-react';
 import { InputField } from '@/shared/ui/InputField.jsx';
 import { SelectField } from '@/shared/ui/SelectField.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
+import { useCepLookup } from '@/shared/hooks/useCepLookup.js';
+import { BRAZILIAN_STATES } from '@/services/cepService.js';
 
 export function EditClientForm({ client, saving = false, onCancel, onSave }) {
   const [formData, setFormData] = useState({ ...client });
-  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     setFormData({ ...client });
@@ -15,6 +16,56 @@ export function EditClientForm({ client, saving = false, onCancel, onSave }) {
   const handleChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
+
+  const handleAddressFound = useCallback((address) => {
+    setFormData((prev) => ({
+      ...prev,
+      street: address.street || prev.street,
+      neighborhood: address.neighborhood || prev.neighborhood,
+      city: address.city || prev.city,
+      state: address.state || prev.state,
+    }));
+  }, []);
+
+  const { loading: loadingCep, lookupCep, formatCep } = useCepLookup(handleAddressFound);
+
+  const handleCepChange = (e) => {
+    const formatted = formatCep(e.target.value);
+    handleChange('cep', formatted);
+
+    const raw = formatted.replace(/\D/g, '');
+    if (raw.length === 8) {
+      lookupCep(raw);
+    }
+  };
+
+  const handleCepBlur = () => {
+    if (formData.cep) {
+      const raw = formData.cep.replace(/\D/g, '');
+      if (raw.length === 8) {
+        lookupCep(raw);
+      }
+    }
+  };
+
+  const cityOptions = useMemo(() => {
+    const baseCities = [
+      'Fortaleza',
+      'Caucaia',
+      'Maracanaú',
+      'Eusébio',
+      'Aquiraz',
+      'Sobral',
+      'Juazeiro do Norte',
+      'Crato',
+      'Itapipoca',
+      'Maranguape',
+    ];
+    if (formData.city && !baseCities.includes(formData.city)) {
+      return [formData.city, ...baseCities];
+    }
+    return baseCities;
+  }, [formData.city]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,22 +121,6 @@ export function EditClientForm({ client, saving = false, onCancel, onSave }) {
             value={formData.username || 'empresa.exemplo'}
             onChange={(e) => handleChange('username', e.target.value)}
           />
-
-          <InputField
-            label="Senha"
-            type={showPassword ? 'text' : 'password'}
-            value={formData.password || '••••••••'}
-            onChange={(e) => handleChange('password', e.target.value)}
-            rightElement={
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="text-yby-muted hover:text-yby-heading p-1"
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
-            }
-          />
         </div>
       </div>
 
@@ -98,35 +133,46 @@ export function EditClientForm({ client, saving = false, onCancel, onSave }) {
           <InputField
             label="CEP"
             required
-            value={formData.cep || '60000-000'}
-            onChange={(e) => handleChange('cep', e.target.value)}
+            placeholder="00000-000"
+            maxLength={9}
+            value={formData.cep || ''}
+            onChange={handleCepChange}
+            onBlur={handleCepBlur}
+            helperText={
+              loadingCep
+                ? 'Buscando endereço pelo CEP...'
+                : 'Digite o CEP para preenchimento automático'
+            }
           />
 
           <InputField
             label="Rua"
             required
-            value={formData.street || 'Rua Exemplo'}
+            placeholder="Nome da rua / logradouro"
+            value={formData.street || ''}
             onChange={(e) => handleChange('street', e.target.value)}
           />
 
           <InputField
             label="Número"
             required
-            value={formData.number || '123'}
+            placeholder="123"
+            value={formData.number || ''}
             onChange={(e) => handleChange('number', e.target.value)}
           />
 
           <InputField
             label="Bairro"
             required
-            value={formData.neighborhood || 'Centro'}
+            placeholder="Bairro"
+            value={formData.neighborhood || ''}
             onChange={(e) => handleChange('neighborhood', e.target.value)}
           />
 
           <SelectField
             label="Estado"
             required
-            options={['Ceará', 'Piauí', 'Maranhão', 'Rio Grande do Norte', 'Paraíba', 'Pernambuco', 'Bahia', 'São Paulo', 'Rio de Janeiro']}
+            options={BRAZILIAN_STATES}
             value={formData.state || 'Ceará'}
             onChange={(e) => handleChange('state', e.target.value)}
           />
@@ -134,7 +180,7 @@ export function EditClientForm({ client, saving = false, onCancel, onSave }) {
           <SelectField
             label="Cidade"
             required
-            options={['Fortaleza', 'Caucaia', 'Maracanaú', 'Eusébio', 'Aquiraz', 'Sobral', 'Juazeiro do Norte']}
+            options={cityOptions}
             value={formData.city || 'Fortaleza'}
             onChange={(e) => handleChange('city', e.target.value)}
           />

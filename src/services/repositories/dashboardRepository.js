@@ -1,17 +1,18 @@
 import {
+  MOCK_DASHBOARD_METRICS_YEAR,
   MOCK_DASHBOARD_METRICS_MONTH,
   MOCK_DASHBOARD_METRICS_WEEK,
 } from '../mock/mockData.js';
 
 /**
  * Repositório de Métricas do Dashboard.
- * Aplica filtros de período ('week' | 'month'), PEV e tipo de resíduo.
+ * Aplica filtros de período ('year' | 'month' | 'week'), PEV e tipo de resíduo.
  */
 export const dashboardRepository = {
   /**
    * Obtém métricas do dashboard calculadas de acordo com os filtros.
    * @param {Object} filters
-   * @param {string} [filters.quickFilter] - 'week' | 'month'
+   * @param {string} [filters.quickFilter] - 'year' | 'month' | 'week'
    * @param {string|number} [filters.pev]
    * @param {string} [filters.waste]
    * @param {string} [filters.startDate]
@@ -22,13 +23,28 @@ export const dashboardRepository = {
     // Simula latência de rede realista para feedback visual de skeleton
     await new Promise((resolve) => setTimeout(resolve, 280));
 
-    const isWeek =
-      filters.quickFilter === 'week' ||
-      (filters.startDate &&
-        filters.endDate &&
-        new Date(filters.endDate) - new Date(filters.startDate) <= 7 * 24 * 60 * 60 * 1000);
+    let baseData;
+    if (filters.quickFilter === 'year') {
+      baseData = MOCK_DASHBOARD_METRICS_YEAR;
+    } else if (filters.quickFilter === 'week') {
+      baseData = MOCK_DASHBOARD_METRICS_WEEK;
+    } else if (filters.quickFilter === 'month') {
+      baseData = MOCK_DASHBOARD_METRICS_MONTH;
+    } else if (filters.startDate && filters.endDate) {
+      const start = new Date(filters.startDate);
+      const end = new Date(filters.endDate);
+      const diffDays = Math.ceil((end - start) / (24 * 60 * 60 * 1000));
+      if (diffDays <= 7) {
+        baseData = MOCK_DASHBOARD_METRICS_WEEK;
+      } else if (diffDays <= 31) {
+        baseData = MOCK_DASHBOARD_METRICS_MONTH;
+      } else {
+        baseData = MOCK_DASHBOARD_METRICS_YEAR;
+      }
+    } else {
+      baseData = MOCK_DASHBOARD_METRICS_MONTH;
+    }
 
-    const baseData = isWeek ? MOCK_DASHBOARD_METRICS_WEEK : MOCK_DASHBOARD_METRICS_MONTH;
     const cloned = JSON.parse(JSON.stringify(baseData));
 
     // Se houver filtro por tipo de resíduo, destaca ou recalcula distribuição

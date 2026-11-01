@@ -36,7 +36,7 @@ export function Skeleton({
     <div
       role="status"
       aria-label="Carregando..."
-      className={`yby-skeleton ${variantMap[variant] || 'rounded-xl'} ${className}`}
+      className={`yby-skeleton max-w-full ${variantMap[variant] || 'rounded-xl'} ${className}`}
       style={inlineStyles}
       {...rest}
     />

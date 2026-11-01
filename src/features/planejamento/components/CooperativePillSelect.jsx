@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
-import { ChevronDown, Search, X } from 'lucide-react';
+import { ChevronDown, Search, Check } from 'lucide-react';
 import { getCooperativeTheme } from '@/domain/constants/cooperativeColors.js';
 
 export function CooperativePillSelect({
@@ -10,6 +10,7 @@ export function CooperativePillSelect({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const [openUpwards, setOpenUpwards] = useState(false);
   const popoverRef = useRef(null);
 
   const theme = getCooperativeTheme(value);
@@ -22,13 +23,27 @@ export function CooperativePillSelect({
     }
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      if (popoverRef.current) {
+        const rect = popoverRef.current.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        if (spaceBelow < 260 && rect.top > 260) {
+          setOpenUpwards(true);
+        } else {
+          setOpenUpwards(false);
+        }
+      }
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
+  const searchLower = search.trim().toLowerCase();
   const filteredCoops = cooperatives.filter((c) =>
-    (c.shortName || c.name).toLowerCase().includes(search.toLowerCase())
+    (c.shortName || c.name).toLowerCase().includes(searchLower)
   );
+
+  const shouldShowNoneOption =
+    !searchLower ||
+    'sem cooperativa nenhuma nenhum nada'.includes(searchLower);
 
   return (
     <div className="relative inline-block text-left" ref={popoverRef}>
@@ -70,9 +85,14 @@ export function CooperativePillSelect({
 
       {/* Popover com busca */}
       {isOpen && (
-        <div className="absolute left-0 top-full mt-1.5 w-56 bg-white rounded-xl shadow-popup border border-yby-border p-2 z-50">
+        <div
+          className={clsx(
+            'absolute left-0 w-56 bg-white rounded-xl shadow-popup border border-yby-border p-2 z-50',
+            openUpwards ? 'bottom-full mb-1.5' : 'top-full mt-1.5'
+          )}
+        >
           <div className="relative flex items-center mb-2">
-            <Search className="w-3.5 h-3.5 absolute left-2.5 text-yby-muted" />
+            <Search className="w-3.5 h-3.5 absolute left-2.5 text-yby-muted pointer-events-none" />
             <input
               type="text"
               value={search}
@@ -83,7 +103,37 @@ export function CooperativePillSelect({
             />
           </div>
 
-          <div className="max-h-40 overflow-y-auto space-y-1">
+          <div className="max-h-48 overflow-y-auto space-y-1">
+            {/* Opção Sem cooperativa (não selecionar nada) */}
+            {shouldShowNoneOption && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange('');
+                    setIsOpen(false);
+                    setSearch('');
+                  }}
+                  className={clsx(
+                    'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-left transition-colors',
+                    !value
+                      ? 'bg-yby-light text-yby-primary'
+                      : 'text-yby-heading hover:bg-yby-surface'
+                  )}
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    <span className="w-2.5 h-2.5 rounded-full border-2 border-yby-muted/50 flex-shrink-0 bg-white" />
+                    <span className="truncate">Sem cooperativa</span>
+                  </div>
+                  {!value && <Check className="w-3.5 h-3.5 text-yby-primary flex-shrink-0" />}
+                </button>
+                {filteredCoops.length > 0 && (
+                  <div className="border-t border-yby-border/60 my-1" />
+                )}
+              </>
+            )}
+
+            {/* Cooperativas cadastradas */}
             {filteredCoops.map((coop) => {
               const name = coop.shortName || coop.name;
               const cTheme = getCooperativeTheme(name);
@@ -99,36 +149,29 @@ export function CooperativePillSelect({
                     setSearch('');
                   }}
                   className={clsx(
-                    'w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-left transition-colors',
+                    'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-left transition-colors',
                     isSelected
                       ? 'bg-yby-light text-yby-primary'
                       : 'text-yby-heading hover:bg-yby-surface'
                   )}
                 >
-                  <span
-                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: cTheme.color }}
-                  />
-                  <span className="truncate">{name}</span>
+                  <div className="flex items-center gap-2 truncate">
+                    <span
+                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: cTheme.color }}
+                    />
+                    <span className="truncate">{name}</span>
+                  </div>
+                  {isSelected && <Check className="w-3.5 h-3.5 text-yby-primary flex-shrink-0" />}
                 </button>
               );
             })}
-          </div>
 
-          {/* Opção Sem cooperativa */}
-          <div className="pt-2 mt-1 border-t border-yby-border/60">
-            <button
-              type="button"
-              onClick={() => {
-                onChange('');
-                setIsOpen(false);
-                setSearch('');
-              }}
-              className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-yby-muted hover:text-yby-danger hover:bg-red-50 transition-colors text-left"
-            >
-              <X className="w-3.5 h-3.5" />
-              <span>Sem cooperativa</span>
-            </button>
+            {filteredCoops.length === 0 && !shouldShowNoneOption && (
+              <div className="py-2 px-2 text-xs text-yby-muted text-center">
+                Nenhuma cooperativa encontrada
+              </div>
+            )}
           </div>
         </div>
       )}

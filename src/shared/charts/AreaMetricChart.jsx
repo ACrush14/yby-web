@@ -25,7 +25,7 @@ export function AreaMetricChart({ data = [], height = 280 }) {
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E6DFD3" />
-          <XAxis dataKey="month" stroke="#7A7067" fontSize={12} tickLine={false} />
+          <XAxis dataKey="month" stroke="#7A7067" fontSize={11} tickLine={false} interval={0} />
           <YAxis stroke="#7A7067" fontSize={12} tickLine={false} />
           <Tooltip
             contentStyle={{

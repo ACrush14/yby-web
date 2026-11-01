@@ -25,26 +25,26 @@ export function DashboardPage() {
         title="Dashboard"
         subtitle="Indicadores ambientais certificados e evolução histórica da gestão de resíduos"
         actions={
-          <>
+          <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap w-full sm:w-auto">
             <Button
               variant="outline"
-              size="md"
+              size="sm"
               onClick={actions.handleExportStories}
-              className="w-full sm:w-auto"
+              className="h-9 px-3.5 text-xs font-semibold rounded-xl whitespace-nowrap shrink-0 border-yby-primary text-yby-primary hover:bg-yby-tint/50 transition-all shadow-none w-full sm:w-auto"
             >
-              <Share2 className="w-4 h-4 mr-2" />
-              Baixar artes para Stories
+              <Share2 className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+              <span>Baixar artes para Stories</span>
             </Button>
             <Button
               variant="primary"
-              size="md"
+              size="sm"
               onClick={actions.handleExportPdf}
-              className="w-full sm:w-auto"
+              className="h-9 px-3.5 text-xs font-semibold rounded-xl whitespace-nowrap shrink-0 bg-yby-primary hover:bg-yby-primary-hover text-white transition-all shadow-sm w-full sm:w-auto"
             >
-              <Download className="w-4 h-4 mr-2" />
-              Baixar relatório PDF
+              <Download className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+              <span>Baixar relatório PDF</span>
             </Button>
-          </>
+          </div>
         }
       />
 
@@ -63,12 +63,18 @@ export function DashboardPage() {
         <div className="lg:col-span-2 bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">
-              {metrics.periodType === 'week' ? 'Coleta em peso (kg) na semana' : 'Coleta em peso (kg) por mês'}
+              {metrics.periodType === 'week'
+                ? 'Coleta em peso (kg) na semana'
+                : metrics.periodType === 'month'
+                ? 'Coleta em peso (kg) no mês'
+                : 'Coleta em peso (kg) por mês'}
             </h3>
             <p className="text-xs text-yby-muted">
               {metrics.periodType === 'week'
                 ? 'Peso coletado por dia na semana selecionada (12/10 a 18/10/2026)'
-                : 'Peso coletado por mês no período selecionado'}
+                : metrics.periodType === 'month'
+                ? 'Peso coletado por dia no mês de Outubro/2026'
+                : 'Peso coletado por mês no ano de 2026'}
             </p>
           </div>
           <AreaMetricChart data={metrics.monthlyWeight} height={260} />
@@ -78,7 +84,11 @@ export function DashboardPage() {
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">Tipo de resíduo coletado</h3>
             <p className="text-xs text-yby-muted">
-              {metrics.periodType === 'week' ? 'Participação na semana atual' : 'Participação no período'}
+              {metrics.periodType === 'week'
+                ? 'Participação na semana atual'
+                : metrics.periodType === 'month'
+                ? 'Participação no mês atual'
+                : 'Participação no ano de 2026'}
             </p>
           </div>
           <WasteDonutChart
@@ -97,16 +107,24 @@ export function DashboardPage() {
         <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">
-              {metrics.periodType === 'week' ? 'Economia de água na semana' : 'Economia de água por mês'}
+              {metrics.periodType === 'week'
+                ? 'Economia de água na semana'
+                : metrics.periodType === 'month'
+                ? 'Economia de água no mês'
+                : 'Economia de água por mês'}
             </h3>
             <p className="text-xs text-yby-muted">
-              {metrics.periodType === 'week' ? 'Litros economizados por dia' : 'Litros economizados no período'}
+              {metrics.periodType === 'week'
+                ? 'Litros economizados por dia (12/10 a 18/10/2026)'
+                : metrics.periodType === 'month'
+                ? 'Litros economizados por dia em Outubro/2026'
+                : 'Litros economizados por mês em 2026'}
             </p>
           </div>
           <MonthlyBarChart
             data={metrics.monthlyWater}
             color="#005885"
-            unit={metrics.waterUnit || 'milhões L'}
+            unit={metrics.waterUnit || 'mil L'}
             height={220}
           />
         </div>
@@ -114,10 +132,18 @@ export function DashboardPage() {
         <div className="bg-white p-5 md:p-6 rounded-2xl border border-yby-border shadow-card transition-all duration-300 ease-out hover:shadow-card-elevated hover:border-yby-primary/30 hover:-translate-y-1 cursor-default">
           <div className="mb-4">
             <h3 className="text-base font-bold text-yby-heading">
-              {metrics.periodType === 'week' ? 'Consumo de energia na semana' : 'Consumo de energia por mês'}
+              {metrics.periodType === 'week'
+                ? 'Consumo de energia na semana'
+                : metrics.periodType === 'month'
+                ? 'Consumo de energia no mês'
+                : 'Consumo de energia por mês'}
             </h3>
             <p className="text-xs text-yby-muted">
-              {metrics.periodType === 'week' ? 'MWh poupados por dia' : 'MWh poupados no período'}
+              {metrics.periodType === 'week'
+                ? 'MWh poupados por dia (12/10 a 18/10/2026)'
+                : metrics.periodType === 'month'
+                ? 'MWh poupados por dia em Outubro/2026'
+                : 'MWh poupados por mês em 2026'}
             </p>
           </div>
           <MonthlyBarChart

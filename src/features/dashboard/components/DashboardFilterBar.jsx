@@ -40,7 +40,20 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
       </div>
 
       {/* Pílulas de filtro rápido */}
-      <div className="flex items-center gap-2 mt-4 pt-3 border-t border-yby-border/60">
+      <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-yby-border/60">
+        <button
+          type="button"
+          onClick={() => filters.handleApplyQuickFilter('year')}
+          className={clsx(
+            'px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 select-none',
+            filters.quickFilter === 'year'
+              ? 'bg-yby-light text-yby-primary shadow-sm font-bold border border-yby-primary/30'
+              : 'bg-white text-yby-muted hover:text-yby-heading hover:shadow-sm border border-yby-border'
+          )}
+        >
+          Ano atual
+        </button>
+
         <button
           type="button"
           onClick={() => filters.handleApplyQuickFilter('month')}
@@ -64,7 +77,7 @@ export function DashboardFilterBar({ filters, clients, wasteList }) {
               : 'bg-white text-yby-muted hover:text-yby-heading hover:shadow-sm border border-yby-border'
           )}
         >
-          Semana Atual
+          Semana atual
         </button>
       </div>
     </div>

@@ -13,7 +13,7 @@ export function PageHeader({ title, subtitle, actions, className = '' }) {
         className
       )}
     >
-      <div>
+      <div className="min-w-0 flex-1">
         <h1 className="text-2xl md:text-3xl font-extrabold text-yby-heading tracking-tight">
           {title}
         </h1>
@@ -25,7 +25,7 @@ export function PageHeader({ title, subtitle, actions, className = '' }) {
       </div>
 
       {actions && (
-        <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
+        <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap flex-shrink-0">
           {actions}
         </div>
       )}

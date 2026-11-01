@@ -18,7 +18,7 @@ export function useDashboardController() {
   const [waste, setWaste] = useState('');
   const [startDate, setStartDate] = useState('2026-10-01');
   const [endDate, setEndDate] = useState('2026-10-31');
-  const [quickFilter, setQuickFilter] = useState('month'); // 'month' | 'week' | ''
+  const [quickFilter, setQuickFilter] = useState('month'); // 'year' | 'month' | 'week' | ''
 
   // Carrega lista de clientes (PEVs) no carregamento inicial
   useEffect(() => {
@@ -68,14 +68,18 @@ export function useDashboardController() {
 
   const handleApplyQuickFilter = (type) => {
     setQuickFilter(type);
-    if (type === 'month') {
+    if (type === 'year') {
+      setStartDate('2026-01-01');
+      setEndDate('2026-12-31');
+      toast.info('Filtrado por: Ano atual (2026)');
+    } else if (type === 'month') {
       setStartDate('2026-10-01');
       setEndDate('2026-10-31');
-      toast.info('Filtrado por: Mês atual');
+      toast.info('Filtrado por: Mês atual (Outubro/2026)');
     } else if (type === 'week') {
       setStartDate('2026-10-12');
       setEndDate('2026-10-18');
-      toast.info('Filtrado por: Semana Atual');
+      toast.info('Filtrado por: Semana atual (12/10 a 18/10/2026)');
     }
   };
 

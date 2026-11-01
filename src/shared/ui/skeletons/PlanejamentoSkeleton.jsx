@@ -29,28 +29,32 @@ export function PlanejamentoSkeleton() {
 
       {/* Table Matrix Skeleton */}
       <div className="bg-white rounded-2xl border border-yby-border shadow-card overflow-hidden">
-        <div className="p-4 bg-yby-surface/40 border-b border-yby-border/60 grid grid-cols-6 gap-4">
-          <Skeleton variant="text" className="w-24 h-4" />
-          <Skeleton variant="text" className="w-20 h-4" />
-          <Skeleton variant="text" className="w-20 h-4" />
-          <Skeleton variant="text" className="w-20 h-4" />
-          <Skeleton variant="text" className="w-20 h-4" />
-          <Skeleton variant="text" className="w-20 h-4" />
-        </div>
-        <div className="divide-y divide-yby-border/40">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="p-4 grid grid-cols-6 gap-4 items-center">
-              <div className="space-y-1">
-                <Skeleton variant="text" className="w-32 h-4" />
-                <Skeleton variant="text" className="w-20 h-3" />
-              </div>
-              <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
-              <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
-              <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
-              <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
-              <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
+        <div className="overflow-x-auto">
+          <div className="min-w-[680px]">
+            <div className="p-4 bg-yby-surface/40 border-b border-yby-border/60 grid grid-cols-6 gap-4">
+              <Skeleton variant="text" className="w-24 h-4" />
+              <Skeleton variant="text" className="w-20 h-4" />
+              <Skeleton variant="text" className="w-20 h-4" />
+              <Skeleton variant="text" className="w-20 h-4" />
+              <Skeleton variant="text" className="w-20 h-4" />
+              <Skeleton variant="text" className="w-20 h-4" />
             </div>
-          ))}
+            <div className="divide-y divide-yby-border/40">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="p-4 grid grid-cols-6 gap-4 items-center">
+                  <div className="space-y-1">
+                    <Skeleton variant="text" className="w-32 h-4" />
+                    <Skeleton variant="text" className="w-20 h-3" />
+                  </div>
+                  <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
+                  <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
+                  <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
+                  <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
+                  <Skeleton variant="rectangular" className="w-full h-9 rounded-xl" />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

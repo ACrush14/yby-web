@@ -118,6 +118,8 @@
   position: relative;
   overflow: hidden;
   background-color: #ECE5D8;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .yby-skeleton::after {

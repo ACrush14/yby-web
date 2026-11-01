@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import {
@@ -10,7 +10,6 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  ChevronDown,
   Settings,
   Building2,
   Users,
@@ -20,16 +19,12 @@ import { YbyIcon } from '@/shared/ui/YbyIcon.jsx';
 
 /**
  * Menu lateral retrátil e expansível do YBY.
- * Possui submenus em Cadastro e Edição (Cliente, Cooperativa, Gestor)
+ * Possui submenus em Cadastro e Edição (Cliente, Cooperativa, Gestor) sempre abertos
  * e área de perfil com foto, nome, login e configurações no rodapé.
  */
 export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = '' }) {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Estados de expansão dos submenus
-  const [cadastroOpen, setCadastroOpen] = useState(location.pathname.startsWith('/cadastro'));
-  const [edicaoOpen, setEdicaoOpen] = useState(location.pathname.startsWith('/edicao'));
 
   // Estado do modal de configurações da conta
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -65,12 +60,6 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
     localStorage.removeItem('usuario');
     navigate('/signIn');
   };
-
-  // Abre automaticamente o submenu se a rota atual for correspondente
-  useEffect(() => {
-    if (location.pathname.startsWith('/cadastro')) setCadastroOpen(true);
-    if (location.pathname.startsWith('/edicao')) setEdicaoOpen(true);
-  }, [location.pathname]);
 
   const searchParams = new URLSearchParams(location.search);
   const currentTab = searchParams.get('tab') || 'cliente';
@@ -188,12 +177,16 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
               )}
             </NavLink>
 
-            {/* 4. CADASTRO com Submenu (Cliente, Cooperativa, Usuário) */}
+            {/* 4. CADASTRO com Submenu Permanente (Cliente, Cooperativa, Usuário) */}
             <div>
               <div
                 onClick={() => {
-                  if (collapsed) onToggleCollapse();
-                  setCadastroOpen(!cadastroOpen);
+                  if (collapsed) {
+                    onToggleCollapse();
+                  } else {
+                    navigate('/cadastro?tab=cliente');
+                  }
+                  if (onItemClick) onItemClick();
                 }}
                 className={clsx(
                   'flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer select-none',
@@ -207,18 +200,10 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                   <UserPlus className="w-5 h-5 flex-shrink-0" />
                   {!collapsed && <span>Cadastro</span>}
                 </div>
-                {!collapsed && (
-                  <ChevronDown
-                    className={clsx(
-                      'w-4 h-4 transition-transform duration-200 text-yby-muted',
-                      cadastroOpen && 'transform rotate-180'
-                    )}
-                  />
-                )}
               </div>
 
               {/* Sub-itens de Cadastro */}
-              {!collapsed && cadastroOpen && (
+              {!collapsed && (
                 <div className="pl-10 pr-2 pt-1 pb-1 space-y-1">
                   {[
                     { id: 'cliente', label: 'Cliente' },
@@ -308,12 +293,16 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
               )}
             </NavLink>
 
-            {/* 5. EDIÇÃO DE USUÁRIO com Submenu (Cliente, Cooperativa, Gestor) */}
+            {/* 5. EDIÇÃO DE USUÁRIO com Submenu Permanente (Cliente, Cooperativa, Usuário) */}
             <div>
               <div
                 onClick={() => {
-                  if (collapsed) onToggleCollapse();
-                  setEdicaoOpen(!edicaoOpen);
+                  if (collapsed) {
+                    onToggleCollapse();
+                  } else {
+                    navigate('/edicao?tab=cliente');
+                  }
+                  if (onItemClick) onItemClick();
                 }}
                 className={clsx(
                   'flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer select-none',
@@ -327,18 +316,10 @@ export function Sidebar({ collapsed, onToggleCollapse, onItemClick, className = 
                   <Edit3 className="w-5 h-5 flex-shrink-0" />
                   {!collapsed && <span className="whitespace-nowrap">Edição usuário</span>}
                 </div>
-                {!collapsed && (
-                  <ChevronDown
-                    className={clsx(
-                      'w-4 h-4 transition-transform duration-200 text-yby-muted',
-                      edicaoOpen && 'transform rotate-180'
-                    )}
-                  />
-                )}
               </div>
 
               {/* Sub-itens de Edição */}
-              {!collapsed && edicaoOpen && (
+              {!collapsed && (
                 <div className="pl-10 pr-2 pt-1 pb-1 space-y-1">
                   {[
                     { id: 'cliente', label: 'Cliente' },

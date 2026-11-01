@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import { InputField } from '@/shared/ui/InputField.jsx';
 import { SelectField } from '@/shared/ui/SelectField.jsx';
 import { Button } from '@/shared/ui/Button.jsx';
 import { clientRepository } from '@/services/repositories/clientRepository.js';
+import { useCepLookup } from '@/shared/hooks/useCepLookup.js';
+import { BRAZILIAN_STATES } from '@/services/cepService.js';
 
 export function ClientForm({ onCancel, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -30,28 +32,55 @@ export function ClientForm({ onCancel, onSuccess }) {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  // Busca automática de CEP via ViaCEP
-  const handleCepBlur = async () => {
-    const rawCep = formData.cep.replace(/\D/g, '');
-    if (rawCep.length === 8) {
-      try {
-        const res = await fetch(`https://viacep.com.br/ws/${rawCep}/json/`);
-        const data = await res.json();
-        if (!data.erro) {
-          setFormData((prev) => ({
-            ...prev,
-            street: data.logradouro || prev.street,
-            neighborhood: data.bairro || prev.neighborhood,
-            city: data.localidade || prev.city,
-            state: data.uf || prev.state,
-          }));
-          toast.info('Endereço preenchido automaticamente pelo CEP.');
-        }
-      } catch (err) {
-        // silencioso
+  const handleAddressFound = useCallback((address) => {
+    setFormData((prev) => ({
+      ...prev,
+      street: address.street || prev.street,
+      neighborhood: address.neighborhood || prev.neighborhood,
+      city: address.city || prev.city,
+      state: address.state || prev.state,
+    }));
+  }, []);
+
+  const { loading: loadingCep, lookupCep, formatCep } = useCepLookup(handleAddressFound);
+
+  const handleCepChange = (e) => {
+    const formatted = formatCep(e.target.value);
+    handleChange('cep', formatted);
+
+    const raw = formatted.replace(/\D/g, '');
+    if (raw.length === 8) {
+      lookupCep(raw);
+    }
+  };
+
+  const handleCepBlur = () => {
+    if (formData.cep) {
+      const raw = formData.cep.replace(/\D/g, '');
+      if (raw.length === 8) {
+        lookupCep(raw);
       }
     }
   };
+
+  const cityOptions = useMemo(() => {
+    const baseCities = [
+      'Fortaleza',
+      'Caucaia',
+      'Maracanaú',
+      'Eusébio',
+      'Aquiraz',
+      'Sobral',
+      'Juazeiro do Norte',
+      'Crato',
+      'Itapipoca',
+      'Maranguape',
+    ];
+    if (formData.city && !baseCities.includes(formData.city)) {
+      return [formData.city, ...baseCities];
+    }
+    return baseCities;
+  }, [formData.city]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -153,9 +182,15 @@ export function ClientForm({ onCancel, onSuccess }) {
             label="CEP"
             required
             placeholder="00000-000"
+            maxLength={9}
             value={formData.cep}
             onBlur={handleCepBlur}
-            onChange={(e) => handleChange('cep', e.target.value)}
+            onChange={handleCepChange}
+            helperText={
+              loadingCep
+                ? 'Buscando endereço pelo CEP...'
+                : 'Digite o CEP para preenchimento automático'
+            }
           />
 
           <InputField
@@ -186,7 +221,7 @@ export function ClientForm({ onCancel, onSuccess }) {
             label="Estado"
             required
             placeholder="Selecione"
-            options={['Ceará', 'Piauí', 'Maranhão', 'Rio Grande do Norte', 'Paraíba', 'Pernambuco', 'Bahia', 'São Paulo', 'Rio de Janeiro']}
+            options={BRAZILIAN_STATES}
             value={formData.state}
             onChange={(e) => handleChange('state', e.target.value)}
           />
@@ -195,7 +230,7 @@ export function ClientForm({ onCancel, onSuccess }) {
             label="Cidade"
             required
             placeholder="Selecione"
-            options={['Fortaleza', 'Caucaia', 'Maracanaú', 'Eusébio', 'Aquiraz', 'Sobral', 'Juazeiro do Norte']}
+            options={cityOptions}
             value={formData.city}
             onChange={(e) => handleChange('city', e.target.value)}
           />

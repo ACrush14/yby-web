@@ -24,28 +24,32 @@ export function UsuariosSkeleton() {
 
       {/* Table Skeleton */}
       <div className="bg-white rounded-2xl border border-yby-border shadow-card overflow-hidden">
-        <div className="p-4 border-b border-yby-border/60 bg-yby-surface/40 flex items-center justify-between">
-          <Skeleton variant="text" className="w-36 h-4" />
-          <Skeleton variant="text" className="w-24 h-4" />
-        </div>
-        <div className="divide-y divide-yby-border/40">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="p-4 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Skeleton variant="circular" className="w-9 h-9" />
-                <div className="space-y-1.5">
-                  <Skeleton variant="text" className="w-32 h-4" />
-                  <Skeleton variant="text" className="w-40 h-3" />
-                </div>
-              </div>
-              <Skeleton variant="rectangular" className="w-32 h-6 rounded-full" />
-              <Skeleton variant="text" className="w-36 h-4 hidden sm:block" />
-              <div className="flex items-center gap-2">
-                <Skeleton variant="circular" className="w-8 h-8" />
-                <Skeleton variant="circular" className="w-8 h-8" />
-              </div>
+        <div className="overflow-x-auto">
+          <div className="min-w-[600px]">
+            <div className="p-4 border-b border-yby-border/60 bg-yby-surface/40 flex items-center justify-between">
+              <Skeleton variant="text" className="w-36 h-4" />
+              <Skeleton variant="text" className="w-24 h-4" />
             </div>
-          ))}
+            <div className="divide-y divide-yby-border/40">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="p-4 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <Skeleton variant="circular" className="w-9 h-9" />
+                    <div className="space-y-1.5">
+                      <Skeleton variant="text" className="w-32 h-4" />
+                      <Skeleton variant="text" className="w-40 h-3" />
+                    </div>
+                  </div>
+                  <Skeleton variant="rectangular" className="w-32 h-6 rounded-full" />
+                  <Skeleton variant="text" className="w-36 h-4 hidden sm:block" />
+                  <div className="flex items-center gap-2">
+                    <Skeleton variant="circular" className="w-8 h-8" />
+                    <Skeleton variant="circular" className="w-8 h-8" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

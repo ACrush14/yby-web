@@ -23,7 +23,7 @@ export function MonthlyBarChart({
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E6DFD3" />
-          <XAxis dataKey="month" stroke="#7A7067" fontSize={12} tickLine={false} />
+          <XAxis dataKey="month" stroke="#7A7067" fontSize={11} tickLine={false} interval={0} />
           <YAxis stroke="#7A7067" fontSize={12} tickLine={false} />
           <Tooltip
             contentStyle={{

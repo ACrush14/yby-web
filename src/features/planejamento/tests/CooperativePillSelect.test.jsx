@@ -65,4 +65,39 @@ describe('CooperativePillSelect', () => {
 
     expect(handleChange).toHaveBeenCalledWith('');
   });
+
+  it('deve exibir a opção "Sem cooperativa" no topo da lista com estado ativo quando não houver valor', () => {
+    render(
+      <CooperativePillSelect
+        value=""
+        cooperatives={mockCooperatives}
+        onChange={vi.fn()}
+      />
+    );
+
+    const selectButton = screen.getByRole('button', { name: /Selecionar/i });
+    fireEvent.click(selectButton);
+
+    const noneOption = screen.getByRole('button', { name: /Sem cooperativa/i });
+    expect(noneOption).toBeInTheDocument();
+    expect(noneOption.className).toContain('bg-yby-light text-yby-primary');
+  });
+
+  it('permite filtrar as cooperativas pelo campo de busca', () => {
+    render(
+      <CooperativePillSelect
+        value=""
+        cooperatives={mockCooperatives}
+        onChange={vi.fn()}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: /Selecionar/i }));
+
+    const searchInput = screen.getByPlaceholderText(/Buscar cooperativa/i);
+    fireEvent.change(searchInput, { target: { value: 'Cooc' } });
+
+    expect(screen.queryByRole('button', { name: /Yby/i })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Coocencipe/i })).toBeInTheDocument();
+  });
 });

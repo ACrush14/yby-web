@@ -38,46 +38,50 @@ export function RelatoriosSkeleton() {
 
       {/* Table Card Skeleton */}
       <div className="bg-white rounded-2xl border border-yby-border shadow-card overflow-hidden">
-        {/* Table header bar */}
-        <div className="p-4 border-b border-yby-border/60 bg-yby-surface/40 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Skeleton variant="text" className="w-12 h-4" />
-            <Skeleton variant="text" className="w-28 h-4" />
-            <Skeleton variant="text" className="w-24 h-4 hidden sm:block" />
-            <Skeleton variant="text" className="w-20 h-4 hidden md:block" />
-          </div>
-          <Skeleton variant="text" className="w-20 h-4" />
-        </div>
-
-        {/* 6 Data Rows */}
-        <div className="divide-y divide-yby-border/40">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="p-4 flex items-center justify-between gap-4">
-              <Skeleton variant="text" className="w-10 h-4" />
-              <div className="flex-1 max-w-xs space-y-1">
-                <Skeleton variant="text" className="w-36 h-4" />
-                <Skeleton variant="text" className="w-24 h-3" />
+        <div className="overflow-x-auto">
+          <div className="min-w-[640px]">
+            {/* Table header bar */}
+            <div className="p-4 border-b border-yby-border/60 bg-yby-surface/40 flex items-center justify-between">
+              <div className="flex items-center gap-6">
+                <Skeleton variant="text" className="w-12 h-4" />
+                <Skeleton variant="text" className="w-28 h-4" />
+                <Skeleton variant="text" className="w-24 h-4 hidden sm:block" />
+                <Skeleton variant="text" className="w-20 h-4 hidden md:block" />
               </div>
-              <Skeleton variant="text" className="w-28 h-4 hidden sm:block" />
-              <Skeleton variant="rectangular" className="w-24 h-6 rounded-full" />
               <Skeleton variant="text" className="w-20 h-4" />
-              <Skeleton variant="text" className="w-24 h-4 hidden md:block" />
+            </div>
+
+            {/* 6 Data Rows */}
+            <div className="divide-y divide-yby-border/40">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="p-4 flex items-center justify-between gap-4">
+                  <Skeleton variant="text" className="w-10 h-4" />
+                  <div className="flex-1 max-w-xs space-y-1">
+                    <Skeleton variant="text" className="w-36 h-4" />
+                    <Skeleton variant="text" className="w-24 h-3" />
+                  </div>
+                  <Skeleton variant="text" className="w-28 h-4 hidden sm:block" />
+                  <Skeleton variant="rectangular" className="w-24 h-6 rounded-full" />
+                  <Skeleton variant="text" className="w-20 h-4" />
+                  <Skeleton variant="text" className="w-24 h-4 hidden md:block" />
+                  <div className="flex items-center gap-2">
+                    <Skeleton variant="circular" className="w-8 h-8" />
+                    <Skeleton variant="circular" className="w-8 h-8" />
+                    <Skeleton variant="circular" className="w-8 h-8" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Table Footer */}
+            <div className="p-4 bg-yby-surface/30 border-t border-yby-border/60 flex items-center justify-between">
+              <Skeleton variant="text" className="w-36 h-4" />
               <div className="flex items-center gap-2">
-                <Skeleton variant="circular" className="w-8 h-8" />
-                <Skeleton variant="circular" className="w-8 h-8" />
-                <Skeleton variant="circular" className="w-8 h-8" />
+                <Skeleton variant="rectangular" className="w-8 h-8 rounded-lg" />
+                <Skeleton variant="rectangular" className="w-8 h-8 rounded-lg" />
+                <Skeleton variant="rectangular" className="w-8 h-8 rounded-lg" />
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Table Footer */}
-        <div className="p-4 bg-yby-surface/30 border-t border-yby-border/60 flex items-center justify-between">
-          <Skeleton variant="text" className="w-36 h-4" />
-          <div className="flex items-center gap-2">
-            <Skeleton variant="rectangular" className="w-8 h-8 rounded-lg" />
-            <Skeleton variant="rectangular" className="w-8 h-8 rounded-lg" />
-            <Skeleton variant="rectangular" className="w-8 h-8 rounded-lg" />
           </div>
         </div>
       </div>
