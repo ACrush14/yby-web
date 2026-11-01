@@ -63,9 +63,9 @@ export function SecondaryKpiGrid({ metrics }) {
             }}
             className={clsx(
               'group rounded-2xl border relative transition-all duration-300 ease-out cursor-pointer select-none',
-              'px-3.5 py-3 sm:px-4 sm:py-3.5 xl:px-4.5 xl:py-4',
+              'px-3 py-3 sm:px-3.5 sm:py-3.5 xl:px-4 xl:py-4',
               isExpanded
-                ? 'z-20 bg-white scale-[1.03] sm:scale-105 shadow-xl border-yby-primary/60 ring-2 ring-yby-primary/15 -translate-y-1'
+                ? 'z-20 bg-white shadow-card-elevated border-yby-primary ring-1 ring-yby-primary/30 -translate-y-1'
                 : 'bg-yby-zebra hover:bg-white border-yby-border/80 hover:-translate-y-1 hover:shadow-card-hover hover:border-yby-primary/30'
             )}
           >
@@ -78,21 +78,13 @@ export function SecondaryKpiGrid({ metrics }) {
               style={{ backgroundColor: card.accentColor }}
             />
             <span
-              className={clsx(
-                'text-[10px] sm:text-[10.5px] xl:text-[11px] font-bold tracking-tight uppercase block transition-colors leading-tight',
-                isExpanded
-                  ? 'text-yby-heading whitespace-normal break-words'
-                  : 'text-yby-muted truncate group-hover:text-yby-heading'
-              )}
+              className="text-[10px] sm:text-[10.5px] xl:text-[11px] font-bold tracking-tight uppercase block transition-colors leading-tight text-yby-muted truncate group-hover:text-yby-heading whitespace-nowrap"
               title={card.title}
             >
               {card.title}
             </span>
             <p
-              className={clsx(
-                'font-extrabold text-yby-heading mt-1 tracking-tight whitespace-nowrap transition-all duration-200',
-                isExpanded ? 'text-base sm:text-lg xl:text-xl' : 'text-sm sm:text-base xl:text-lg'
-              )}
+              className="font-extrabold text-yby-heading mt-1 tracking-tight whitespace-nowrap text-sm sm:text-base xl:text-lg"
               title={card.value}
             >
               {card.value}

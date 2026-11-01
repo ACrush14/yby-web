@@ -138,11 +138,7 @@ export function EditClientForm({ client, saving = false, onCancel, onSave }) {
             value={formData.cep || ''}
             onChange={handleCepChange}
             onBlur={handleCepBlur}
-            helperText={
-              loadingCep
-                ? 'Buscando endereço pelo CEP...'
-                : 'Digite o CEP para preenchimento automático'
-            }
+            helperText={loadingCep ? 'Buscando endereço...' : undefined}
           />
 
           <InputField

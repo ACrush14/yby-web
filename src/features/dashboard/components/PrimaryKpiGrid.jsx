@@ -4,10 +4,10 @@ import clsx from 'clsx';
 
 /**
  * Formata o valor dos KPIs primários para garantir que o número e a unidade
- * fiquem legíveis, sem estourar o card nem sofrer corte em telas menores.
- * @param {{ value: string, isExpanded?: boolean }} props
+ * fiquem perfeitamente legíveis em uma linha, sem estourar nem quebrar no hover.
+ * @param {{ value: string }} props
  */
-function FormattedKpiValue({ value, isExpanded = false }) {
+function FormattedKpiValue({ value }) {
   if (!value) return null;
 
   // Caso 1: Formato monetário "R$ 5.733,56"
@@ -16,14 +16,7 @@ function FormattedKpiValue({ value, isExpanded = false }) {
     return (
       <div className="inline-flex items-baseline gap-1 whitespace-nowrap flex-nowrap text-yby-heading">
         <span className="text-xs sm:text-sm font-bold text-yby-muted flex-shrink-0">R$</span>
-        <span
-          className={clsx(
-            'font-extrabold tracking-tight whitespace-nowrap transition-all duration-200',
-            isExpanded
-              ? 'text-base sm:text-lg xl:text-xl'
-              : 'text-sm sm:text-[15px] xl:text-base 2xl:text-lg'
-          )}
-        >
+        <span className="font-extrabold tracking-tight whitespace-nowrap text-sm sm:text-[15px] xl:text-base 2xl:text-lg">
           {amount}
         </span>
       </div>
@@ -37,24 +30,10 @@ function FormattedKpiValue({ value, isExpanded = false }) {
     const unit = value.slice(spaceIndex + 1);
     return (
       <div className="inline-flex items-baseline gap-1 whitespace-nowrap flex-nowrap text-yby-heading">
-        <span
-          className={clsx(
-            'font-extrabold tracking-tight whitespace-nowrap transition-all duration-200',
-            isExpanded
-              ? 'text-base sm:text-lg xl:text-xl'
-              : 'text-sm sm:text-[15px] xl:text-base 2xl:text-lg'
-          )}
-        >
+        <span className="font-extrabold tracking-tight whitespace-nowrap text-sm sm:text-[15px] xl:text-base 2xl:text-lg">
           {number}
         </span>
-        <span
-          className={clsx(
-            'font-semibold text-yby-muted whitespace-nowrap flex-shrink-0 transition-all duration-200',
-            isExpanded
-              ? 'text-xs sm:text-sm'
-              : 'text-[10px] sm:text-[11px] xl:text-xs'
-          )}
-        >
+        <span className="font-semibold text-yby-muted whitespace-nowrap flex-shrink-0 text-[10px] sm:text-[11px] xl:text-xs">
           {unit}
         </span>
       </div>
@@ -62,14 +41,7 @@ function FormattedKpiValue({ value, isExpanded = false }) {
   }
 
   return (
-    <span
-      className={clsx(
-        'font-extrabold text-yby-heading tracking-tight whitespace-nowrap transition-all duration-200',
-        isExpanded
-          ? 'text-base sm:text-lg xl:text-xl'
-          : 'text-sm sm:text-[15px] xl:text-base 2xl:text-lg'
-      )}
-    >
+    <span className="font-extrabold text-yby-heading tracking-tight whitespace-nowrap text-sm sm:text-[15px] xl:text-base 2xl:text-lg">
       {value}
     </span>
   );
@@ -147,38 +119,33 @@ export function PrimaryKpiGrid({ metrics }) {
             }}
             className={clsx(
               'group relative rounded-2xl border transition-all duration-300 ease-out cursor-pointer select-none',
-              'px-3.5 py-3 sm:px-4 sm:py-3.5 xl:px-4.5 xl:py-4 bg-white',
+              'px-3 py-3 sm:px-3.5 sm:py-3.5 xl:px-4 xl:py-4 bg-white',
               isExpanded
-                ? 'z-30 scale-[1.03] sm:scale-105 xl:scale-110 shadow-2xl shadow-yby-primary/15 border-yby-primary ring-2 ring-yby-primary/20 -translate-y-1'
+                ? 'z-20 shadow-card-elevated border-yby-primary ring-1 ring-yby-primary/30 -translate-y-1'
                 : 'z-10 shadow-card border-yby-border hover:-translate-y-1 hover:shadow-card-elevated hover:border-yby-primary/40'
             )}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <div
                 className={clsx(
-                  'w-10 h-10 sm:w-11 sm:h-11 rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out shadow-sm',
-                  isExpanded ? 'scale-110 rotate-3' : 'group-hover:scale-110 group-hover:rotate-3'
+                  'w-9 h-9 sm:w-9.5 sm:h-9.5 xl:w-10 xl:h-10 rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out shadow-sm',
+                  isExpanded ? 'scale-105 rotate-2' : 'group-hover:scale-105 group-hover:rotate-2'
                 )}
                 style={{ backgroundColor: card.bg, color: card.color }}
               >
-                <Icon className="w-5 h-5 sm:w-5.5 sm:h-5.5" />
+                <Icon className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
               </div>
 
               <div className="min-w-0 flex-1">
                 <span
-                  className={clsx(
-                    'text-[11px] sm:text-xs font-semibold text-yby-muted block leading-tight transition-colors',
-                    isExpanded
-                      ? 'text-yby-heading whitespace-normal break-words font-bold'
-                      : 'truncate group-hover:text-yby-heading'
-                  )}
+                  className="text-[11px] sm:text-[11.5px] xl:text-xs font-semibold text-yby-muted group-hover:text-yby-heading block leading-tight transition-colors truncate whitespace-nowrap"
                   title={card.title}
                 >
                   {card.title}
                 </span>
 
-                <div className="mt-1 transition-transform">
-                  <FormattedKpiValue value={card.value} isExpanded={isExpanded} />
+                <div className="mt-1">
+                  <FormattedKpiValue value={card.value} />
                 </div>
               </div>
             </div>
