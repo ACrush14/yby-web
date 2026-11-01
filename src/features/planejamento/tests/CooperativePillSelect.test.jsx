@@ -1,0 +1,68 @@
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { CooperativePillSelect } from '../components/CooperativePillSelect.jsx';
+
+describe('CooperativePillSelect', () => {
+  const mockCooperatives = [
+    { id: 1, name: 'Yby Soluções Sustentáveis', shortName: 'Yby' },
+    { id: 2, name: 'Coocencipe', shortName: 'Coocencipe' },
+  ];
+
+  it('deve exibir borda contínua (border-solid) e texto "Selecionar" quando nenhum valor estiver selecionado', () => {
+    render(
+      <CooperativePillSelect
+        value=""
+        cooperatives={mockCooperatives}
+        onChange={vi.fn()}
+      />
+    );
+
+    const button = screen.getByRole('button', { name: /Selecionar/i });
+    expect(button).toBeInTheDocument();
+    expect(button.className).toContain('border-solid');
+    expect(button.className).not.toContain('border-dashed');
+  });
+
+  it('deve exibir o nome da cooperativa e disparar onChange ao selecionar outra opção', () => {
+    const handleChange = vi.fn();
+    render(
+      <CooperativePillSelect
+        value="Yby"
+        cooperatives={mockCooperatives}
+        onChange={handleChange}
+      />
+    );
+
+    const button = screen.getByRole('button', { name: /Yby/i });
+    expect(button).toBeInTheDocument();
+
+    // Abrir o popover
+    fireEvent.click(button);
+
+    // Clicar em Coocencipe
+    const option = screen.getByRole('button', { name: /Coocencipe/i });
+    fireEvent.click(option);
+
+    expect(handleChange).toHaveBeenCalledWith('Coocencipe');
+  });
+
+  it('permite limpar a seleção com "Sem cooperativa"', () => {
+    const handleChange = vi.fn();
+    render(
+      <CooperativePillSelect
+        value="Yby"
+        cooperatives={mockCooperatives}
+        onChange={handleChange}
+      />
+    );
+
+    const button = screen.getByRole('button', { name: /Yby/i });
+    fireEvent.click(button);
+
+    const clearButton = screen.getByRole('button', { name: /Sem cooperativa/i });
+    fireEvent.click(clearButton);
+
+    expect(handleChange).toHaveBeenCalledWith('');
+  });
+});

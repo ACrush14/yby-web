@@ -25,8 +25,10 @@ export function EdicaoPage() {
   const tabs = [
     { id: 'cliente', label: 'Cliente' },
     { id: 'cooperativa', label: 'Cooperativa' },
-    { id: 'gestor', label: 'Gestor' },
+    { id: 'usuario', label: 'Usuário' },
   ];
+
+  const currentTab = activeTab === 'gestor' ? 'usuario' : activeTab;
 
   if (loading) {
     return <EdicaoSkeleton />;
@@ -36,13 +38,13 @@ export function EdicaoPage() {
     <div className="space-y-6">
       <PageHeader
         title="Edição"
-        subtitle="Atualize os dados cadastrais de clientes, cooperativas e gestores"
+        subtitle="Atualize os dados cadastrais de clientes, cooperativas e usuários"
       />
 
       {/* Abas em Pílula */}
       <PillTabs
         tabs={tabs}
-        activeTab={activeTab}
+        activeTab={currentTab}
         onChange={(tab) => {
           setActiveTab(tab);
           handleClearSelection();
