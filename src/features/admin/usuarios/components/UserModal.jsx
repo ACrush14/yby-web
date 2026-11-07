@@ -110,7 +110,7 @@ export function UserModal({ user, organizations = [], onClose, onSave, saving })
           />
 
           <SelectField
-            label="Papel no Sistema (Role)"
+            label="Papel"
             required
             options={roleOptions}
             value={role}

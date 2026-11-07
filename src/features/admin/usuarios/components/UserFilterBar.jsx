@@ -39,7 +39,7 @@ export function UserFilterBar({ filters, organizations = [] }) {
 
         {/* Filtro por Papel */}
         <SelectField
-          label="Papel / Role"
+          label="Papel"
           options={roleOptions}
           value={filters.role}
           onChange={(e) => filters.setRole(e.target.value)}

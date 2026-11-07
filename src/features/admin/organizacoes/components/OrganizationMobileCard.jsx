@@ -9,28 +9,42 @@ export function OrganizationMobileCard({ org, onEdit, onDelete, onToggleStatus }
   const isActive = org.status === ORGANIZATION_STATUS.ATIVA;
 
   return (
-    <div className="bg-white rounded-2xl border border-yby-border p-4 shadow-card space-y-3 transition-all duration-300 hover:shadow-card-elevated hover:border-yby-primary/30">
+    <div
+      className={`rounded-2xl border p-4 shadow-card space-y-3 transition-all duration-300 hover:shadow-card-elevated ${
+        !isActive
+          ? 'bg-gray-100/90 border-gray-300/80 hover:border-gray-400'
+          : 'bg-white border-yby-border hover:border-yby-primary/30'
+      }`}
+    >
       {/* Cabeçalho do Card */}
       <div className="flex items-start justify-between gap-3 border-b border-yby-border/60 pb-3">
         <div className="flex items-center gap-2.5">
           <div
-            className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-              isCooperativa ? 'bg-yby-tint text-yby-primary' : 'bg-yby-surface text-yby-heading'
+            className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
+              !isActive
+                ? 'bg-gray-200/80 text-gray-500'
+                : isCooperativa
+                ? 'bg-yby-tint text-yby-primary'
+                : 'bg-yby-surface text-yby-heading'
             }`}
           >
             {isCooperativa ? <Truck className="w-4 h-4" /> : <Building2 className="w-4 h-4" />}
           </div>
           <div>
-            <h3 className="font-bold text-sm text-yby-heading leading-tight">{org.name}</h3>
+            <h3
+              className={`font-bold text-sm leading-tight ${
+                isActive ? 'text-yby-heading' : 'text-gray-600'
+              }`}
+            >
+              {org.name}
+            </h3>
             <span className="text-xs text-yby-muted font-mono block mt-0.5">{org.cnpj}</span>
           </div>
         </div>
 
-        {isCooperativa ? (
-          <Badge variant="green">{org.type}</Badge>
-        ) : (
-          <Badge variant="beige">{org.type}</Badge>
-        )}
+        <Badge variant={!isActive ? 'gray' : isCooperativa ? 'green' : 'beige'}>
+          {org.type}
+        </Badge>
       </div>
 
       {/* Linha de Status com Switch */}

@@ -19,7 +19,7 @@ export function UserTable({
           <thead>
             <tr className="bg-yby-surface/60 border-b border-yby-border text-xs font-bold text-yby-muted uppercase tracking-wider">
               <th className="py-3.5 px-4 min-w-[220px]">Usuário</th>
-              <th className="py-3.5 px-4 min-w-[180px]">Papel (Role)</th>
+              <th className="py-3.5 px-4 min-w-[180px]">Papel</th>
               <th className="py-3.5 px-4 min-w-[220px]">Organização Vinculada</th>
               <th className="py-3.5 px-4 text-center min-w-[110px]">Ações</th>
             </tr>

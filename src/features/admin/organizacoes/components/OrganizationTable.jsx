@@ -37,15 +37,21 @@ export function OrganizationTable({
                 <tr
                   key={org.id}
                   className={`transition-colors duration-150 ${
-                    isEven ? 'bg-yby-zebra hover:bg-yby-tint/40' : 'bg-white hover:bg-yby-tint/40'
+                    !isActive
+                      ? 'bg-gray-100/90 hover:bg-gray-200/80'
+                      : isEven
+                      ? 'bg-yby-zebra hover:bg-yby-tint/40'
+                      : 'bg-white hover:bg-yby-tint/40'
                   }`}
                 >
                   {/* Nome e CNPJ */}
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                          isCooperativa
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
+                          !isActive
+                            ? 'bg-gray-200/80 text-gray-500'
+                            : isCooperativa
                             ? 'bg-yby-tint text-yby-primary'
                             : 'bg-yby-surface text-yby-heading'
                         }`}
@@ -57,7 +63,13 @@ export function OrganizationTable({
                         )}
                       </div>
                       <div>
-                        <p className="font-bold text-yby-heading leading-tight">{org.name}</p>
+                        <p
+                          className={`font-bold leading-tight ${
+                            isActive ? 'text-yby-heading' : 'text-gray-600'
+                          }`}
+                        >
+                          {org.name}
+                        </p>
                         <span className="text-xs text-yby-muted font-mono block mt-0.5">
                           {org.cnpj || 'Sem CNPJ informado'}
                         </span>
@@ -67,11 +79,9 @@ export function OrganizationTable({
 
                   {/* Tipo da Organização */}
                   <td className="py-3.5 px-4">
-                    {isCooperativa ? (
-                      <Badge variant="green">{org.type}</Badge>
-                    ) : (
-                      <Badge variant="beige">{org.type}</Badge>
-                    )}
+                    <Badge variant={!isActive ? 'gray' : isCooperativa ? 'green' : 'beige'}>
+                      {org.type}
+                    </Badge>
                   </td>
 
                   {/* Status com Switch Visual */}

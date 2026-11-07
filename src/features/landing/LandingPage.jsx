@@ -408,9 +408,15 @@ export function LandingPage() {
       </section>
 
       {/* Seção CTA de Alta Conversão - Preenchido até o Rodapé */}
-      <section className="w-full bg-gradient-to-br from-yby-dark via-yby-primary to-[#1B5324] text-white pt-16 md:pt-24 pb-14 md:pb-16 relative overflow-hidden">
-        {/* Fade In Sutil no Topo (Transição Suave da Seção Clara para o Verde do CTA) */}
-        <div className="absolute top-0 inset-x-0 h-24 sm:h-36 bg-gradient-to-b from-white via-white/20 to-transparent pointer-events-none z-10" />
+      <section className="w-full bg-gradient-to-br from-yby-dark via-yby-primary to-[#1B5324] text-white pt-20 sm:pt-28 md:pt-36 pb-14 md:pb-16 relative overflow-hidden">
+        {/* Fade In Suave e Gradual no Topo (Transição Orgânica da Seção Clara para o Verde do CTA) */}
+        <div
+          className="absolute top-0 inset-x-0 h-40 sm:h-56 md:h-72 pointer-events-none z-10"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.90) 15%, rgba(255, 255, 255, 0.72) 32%, rgba(255, 255, 255, 0.48) 50%, rgba(255, 255, 255, 0.25) 68%, rgba(255, 255, 255, 0.08) 84%, rgba(255, 255, 255, 0) 100%)',
+          }}
+        />
 
         {/* Efeito de brilho orgânico no fundo */}
         <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
@@ -431,22 +437,15 @@ export function LandingPage() {
             <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed max-w-2xl">
               Acesse a plataforma web, monitore coletas em tempo real e gere indicadores ambientais certificados prontos para seu relatório ESG.
             </p>
-            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="pt-4 flex items-center">
               <Button
                 variant="secondary"
                 size="lg"
                 onClick={() => navigate('/signIn')}
-                className="w-full sm:w-auto font-bold bg-white text-yby-dark hover:bg-yby-cream shadow-lg hover:scale-105 active:scale-95 transition-all text-base px-7 py-3.5"
+                className="w-full sm:w-auto font-bold bg-white text-yby-dark hover:bg-yby-cream shadow-lg hover:scale-105 active:scale-95 transition-all text-base px-8 py-3.5"
               >
                 Acessar Plataforma <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-              <button
-                type="button"
-                onClick={() => navigate('/signIn-client')}
-                className="w-full sm:w-auto inline-flex items-center justify-center font-extrabold text-base px-7 py-3.5 rounded-lg bg-lime-400 hover:bg-lime-300 text-black shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 border border-lime-300"
-              >
-                Portal da Cooperativa <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
             </div>
           </div>
         </div>

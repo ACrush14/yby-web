@@ -165,7 +165,7 @@ describe('Fluxo do Painel Administrativo de Usuários (UI e Interações)', () =
       expect(setSearch).toHaveBeenCalledWith('Mariana');
 
       // 2. Filtro por papel
-      const roleSelect = screen.getByLabelText(/Papel \/ Role/i);
+      const roleSelect = screen.getByLabelText(/^Papel$/i);
       fireEvent.change(roleSelect, { target: { value: USER_ROLES.CLIENTE.id } });
       expect(setRole).toHaveBeenCalledWith(USER_ROLES.CLIENTE.id);
 
@@ -210,11 +210,11 @@ describe('Fluxo do Painel Administrativo de Usuários (UI e Interações)', () =
       // Campos
       expect(screen.getByLabelText(/Nome Completo/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/E-mail/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/Papel no Sistema \(Role\)/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/^Papel/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/Organização Vinculada/i)).toBeInTheDocument();
 
       // Verifica se as 5 opções oficiais de Papel estão presentes no Select
-      const roleSelect = screen.getByLabelText(/Papel no Sistema \(Role\)/i);
+      const roleSelect = screen.getByLabelText(/^Papel/i);
       expect(roleSelect).toContainHTML(USER_ROLES.GESTOR_YBY.label);
       expect(roleSelect).toContainHTML(USER_ROLES.COLABORADOR_YBY.label);
       expect(roleSelect).toContainHTML(USER_ROLES.PRESIDENTE_COOPERATIVA.label);
@@ -257,7 +257,7 @@ describe('Fluxo do Painel Administrativo de Usuários (UI e Interações)', () =
       fireEvent.change(screen.getByLabelText(/E-mail/i), {
         target: { value: 'fernanda@cooperativa.org' },
       });
-      fireEvent.change(screen.getByLabelText(/Papel no Sistema \(Role\)/i), {
+      fireEvent.change(screen.getByLabelText(/^Papel/i), {
         target: { value: USER_ROLES.PRESIDENTE_COOPERATIVA.id },
       });
       fireEvent.change(screen.getByLabelText(/Organização Vinculada/i), {
@@ -314,7 +314,7 @@ describe('Fluxo do Painel Administrativo de Usuários (UI e Interações)', () =
       expect(screen.getByDisplayValue('mariana@somosyby.com')).toBeInTheDocument();
 
       // Altera o papel para Cliente
-      fireEvent.change(screen.getByLabelText(/Papel no Sistema \(Role\)/i), {
+      fireEvent.change(screen.getByLabelText(/^Papel/i), {
         target: { value: USER_ROLES.CLIENTE.id },
       });
 
