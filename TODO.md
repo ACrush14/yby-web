@@ -93,7 +93,7 @@ Proporcionar ao administrador uma experiência simples, intuitiva e organizada p
   - [x] **Tipo da Organização:** Select com 2 opções exclusivas:
     - [x] `Cooperativa`
     - [x] `Cliente`
-  - [x] **Status:** Componente visual **Switch** (ou Checkbox estilizado) para alternar entre `Ativa` e `Inativa`, com rótulo descritivo e feedback imediato.
+  - [x] **Status:** Gerenciado diretamente na listagem (Tabela e Cards Mobile) via **Switch** tátil com feedback imediato; removido do modal para centralizar a alteração em ponto único.
   - [x] **Ações do Formulário:**
     - [x] Botão secundário `Cancelar` (outlined/neutro, retorna para a listagem sem salvar).
     - [x] Botão primário `Salvar` (verde sólido, valida os campos e persiste o cadastro).
@@ -103,7 +103,7 @@ Proporcionar ao administrador uma experiência simples, intuitiva e organizada p
 - [x] **Implementar fluxo de edição reutilizando a estrutura visual do cadastro:**
   - [x] Reutilização estrita da mesma estrutura de formulário (garantindo consistência e baixa duplicação de código).
   - [x] Ao clicar em `Editar` na listagem, o formulário é carregado com todos os campos previamente preenchidos com os dados da organização selecionada.
-  - [x] O switch de status reflete exatamente o estado atual da organização (`Ativa` ou `Inativa`).
+  - [x] O status da organização é alternado diretamente na listagem sem ambiguidade, mantendo o modal focado na edição de dados cadastrais.
   - [x] Botão `Salvar alterações` atualiza os dados e retorna à listagem com toast de sucesso.
   - [x] Botão `Cancelar` descarta edições e retorna à listagem.
 
