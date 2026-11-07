@@ -81,14 +81,14 @@ export function CinematicHero() {
       role="region"
       aria-label="Apresentação Principal da Plataforma YBY"
     >
-      {/* 1. Camada de Imagens Fotográficas com Transição Suave e Fade Out Amplo */}
+      {/* 1. Camada de Imagens Fotográficas com Transição Suave e Visibilidade Estendida */}
       <div
         className="absolute inset-0 z-0"
         style={{
           maskImage:
-            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 68%)',
+            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.6) 86%, rgba(0,0,0,0) 96%)',
           WebkitMaskImage:
-            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 68%)',
+            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.6) 86%, rgba(0,0,0,0) 96%)',
         }}
       >
         {HERO_PHOTOS.map((photo, index) => {
@@ -103,27 +103,27 @@ export function CinematicHero() {
               <img
                 src={photo.src}
                 alt={photo.alt}
-                className="w-full h-full object-cover object-center filter brightness-[0.80] contrast-[1.05]"
+                className="w-full h-full object-cover object-center filter brightness-[0.82] contrast-[1.05]"
                 loading={index === 0 ? 'eager' : 'lazy'}
               />
             </div>
           );
         })}
 
-        {/* Gradiente Atmosférico Escuro / Verde Floresta */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A160E]/50 via-[#0A160E]/70 to-[#0A160E] pointer-events-none" />
+        {/* Gradiente Atmosférico Escuro / Verde Floresta equilibrado */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A160E]/55 via-[#0A160E]/40 to-[#0A160E]/70 pointer-events-none" />
 
         {/* Brilho Verde Orgânico Difuso */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-lime-400/10 rounded-full blur-[100px] pointer-events-none" />
       </div>
 
-      {/* Gradiente de Transição Amplo (Fade In / Fade Out Maior) entre o Hero e a Seção Inferior */}
+      {/* Gradiente de Transição Curto (Fade Out Enxuto) entre o Hero e a Seção Inferior */}
       <div
-        className="absolute bottom-0 inset-x-0 h-80 sm:h-[420px] md:h-[520px] pointer-events-none z-10"
+        className="absolute bottom-0 inset-x-0 h-32 sm:h-40 md:h-48 pointer-events-none z-10"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(10, 22, 14, 0) 0%, rgba(10, 22, 14, 0.35) 25%, rgba(10, 22, 14, 0.75) 50%, rgba(251, 250, 247, 0.45) 80%, rgba(251, 250, 247, 1) 100%)',
+            'linear-gradient(to bottom, rgba(10, 22, 14, 0) 0%, rgba(10, 22, 14, 0.35) 35%, rgba(251, 250, 247, 0.7) 75%, rgba(251, 250, 247, 1) 100%)',
         }}
       />
 
@@ -146,27 +146,27 @@ export function CinematicHero() {
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* 3. Conteúdo Central Sobreposto com Tipografia de Alto Impacto */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 md:px-14 py-20 sm:py-28 flex flex-col items-center justify-center text-center">
-        {/* Título Principal de Alto Impacto - Frases de Efeito em Linhas Separadas */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15] max-w-4xl drop-shadow-md">
+      {/* 3. Conteúdo Central Sobreposto com Tipografia de Alto Impacto Harmonizada */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 md:px-14 py-16 sm:py-24 flex flex-col items-center justify-center text-center">
+        {/* Título Principal de Alto Impacto - Frases de Efeito com Tamanho Harmonizado */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] max-w-4xl drop-shadow-md">
           <span className="block">Dados reais.</span>
           <span className="block">Impacto mensurável.</span>
           <span className="block text-white">Economia circular.</span>
         </h1>
 
         {/* Subtítulo Descritivo */}
-        <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-normal">
+        <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed font-normal">
           Conectamos empresas e condomínios a cooperativas de reciclagem, transformando cada coleta
           em indicadores ambientais certificados.
         </p>
 
         {/* Botões de Ação em Pílula */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+        <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto">
           <button
             type="button"
             onClick={() => navigate('/signIn')}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-lime-400 hover:bg-lime-300 text-black font-extrabold text-sm tracking-wide shadow-xl shadow-lime-500/20 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-lime-400 hover:bg-lime-300 text-black font-extrabold text-sm tracking-wide shadow-xl shadow-lime-500/20 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
           >
             <span>Acessar plataforma</span>
             <ArrowRight className="w-4 h-4" />
@@ -175,7 +175,7 @@ export function CinematicHero() {
           <button
             type="button"
             onClick={handleScrollToContent}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200"
+            className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-200"
           >
             Conhecer operação
           </button>
@@ -183,7 +183,7 @@ export function CinematicHero() {
       </div>
 
       {/* 4. Indicador Discreto de Navegação (Dots Minimalistas com Pílula Suave) */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/15 shadow-md">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/15 shadow-md">
         {HERO_PHOTOS.map((photo, index) => {
           const isActive = index === currentIndex;
           return (
